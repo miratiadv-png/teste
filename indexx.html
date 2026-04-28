@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Fatorcard — Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+/* ══════════════════════════════════════════
+   RESET & CSS VARIABLES
+══════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg0:#07070d;
+  --bg1:#0d0d16;
+  --bg2:#12121e;
+  --card:#161622;
+  --card2:#1c1c2c;
+  --border:rgba(255,255,255,0.055);
+  --borderH:rgba(255,255,255,0.11);
+  --t1:#eeeef5;
+  --t2:#8888aa;
+  --t3:#44445a;
+  --green:#00e676;
+  --blue:#448aff;
+  --orange:#ffab40;
+  --purple:#d580ff;
+  --teal:#18ffff;
+  --pink:#ff4081;
+  --red:#ff5252;
+  --yellow:#ffd740;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg0);
+  color:var(--t1);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg0)}
+::-webkit-scrollbar-thumb{background:#252535;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#353550}
+
+/* ── AMBIENT BG ── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 700px 500px at 5% 15%, rgba(68,138,255,0.045) 0%,transparent 70%),
+    radial-gradient(ellipse 600px 400px at 95% 85%, rgba(0,230,118,0.035) 0%,transparent 70%),
+    radial-gradient(ellipse 500px 350px at 55% 50%, rgba(213,128,255,0.02) 0%,transparent 70%);
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.hdr{
+  position:sticky;top:0;z-index:300;
+  height:68px;
+  background:rgba(13,13,22,0.88);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+}
+.hdr-brand{display:flex;align-items:center;gap:13px}
+.hdr-logo{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,#448aff 0%,#d580ff 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;
+  box-shadow:0 0 22px rgba(68,138,255,0.4),0 0 50px rgba(68,138,255,0.1);
+}
+.hdr-info h1{
+  font-size:1.1rem;font-weight:700;letter-spacing:-.3px;
+  background:linear-gradient(90deg,#fff 0%,#aaaacc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hdr-info p{font-size:.68rem;color:var(--t3);margin-top:2px}
+.hdr-right{display:flex;align-items:center;gap:10px}
+.tag{
+  padding:6px 13px;border-radius:7px;
+  border:1px solid var(--border);
+  font-size:.7rem;color:var(--t2);font-weight:500;
+  background:var(--bg2);
+}
+.live{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(0,230,118,0.07);
+  border:1px solid rgba(0,230,118,0.2);
+  padding:6px 13px;border-radius:20px;
+  font-size:.7rem;font-weight:700;color:var(--green);
+  letter-spacing:.6px;
+}
+.ldot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px var(--green);
+  animation:blink 1.5s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+
+/* ══════════════════════════════════════════
+   FILTER BAR
+══════════════════════════════════════════ */
+.fbar{
+  background:var(--bg1);border-bottom:1px solid var(--border);
+  padding:13px 40px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+}
+.flbl{
+  font-size:.65rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.9px;
+  color:var(--t3);margin-right:3px;
+}
+.fbtn{
+  padding:6px 15px;border-radius:7px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--t2);font-size:.73rem;font-weight:500;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  transition:all .17s ease;
+}
+.fbtn:hover{
+  border-color:rgba(68,138,255,.45);
+  color:var(--t1);background:rgba(68,138,255,.07);
+}
+.fbtn.on{
+  background:linear-gradient(135deg,rgba(68,138,255,.9),rgba(68,138,255,.6));
+  border-color:#448aff;color:#fff;
+  box-shadow:0 0 16px rgba(68,138,255,.28);
+}
+.fbar-sep{width:1px;height:20px;background:var(--border);margin:0 4px}
+.fsearch{
+  margin-left:auto;
+  padding:6px 14px;border-radius:7px;
+  border:1px solid var(--border);
+  background:var(--bg2);
+  color:var(--t1);font-size:.73rem;font-family:'Inter',sans-serif;
+  outline:none;width:200px;
+  transition:border-color .17s;
+}
+.fsearch::placeholder{color:var(--t3)}
+.fsearch:focus{border-color:rgba(68,138,255,.5)}
+
+/* ══════════════════════════════════════════
+   MAIN
+══════════════════════════════════════════ */
+.main{
+  padding:30px 40px 40px;
+  max-width:1700px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.slbl{
+  font-size:.63rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--t3);
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.slbl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ══════════════════════════════════════════
+   KPI CARDS
+══════════════════════════════════════════ */
+.krow4{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:18px}
+.krow3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:30px}
+
+.kc{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px 20px 16px;
+  position:relative;overflow:hidden;
+  cursor:default;
+  transition:all .22s ease;
+  animation:slideUp .5s ease both;
+}
+.kc:hover{
+  transform:translateY(-3px);
+  border-color:var(--borderH);
+  background:var(--card2);
+  box-shadow:0 12px 32px rgba(0,0,0,.5);
+}
+.kc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--ac,var(--blue)),transparent);
+  opacity:.65;
+}
+.kc::after{
+  content:'';position:absolute;top:-35px;right:-15px;
+  width:85px;height:85px;border-radius:50%;
+  background:var(--gl,rgba(68,138,255,.1));
+  pointer-events:none;transition:transform .22s ease;
+}
+.kc:hover::after{transform:scale(1.5)}
+.kc-ico{font-size:1.2rem;margin-bottom:11px;display:block}
+.kc-lbl{font-size:.63rem;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--t3);margin-bottom:6px}
+.kc-val{
+  font-size:1.62rem;font-weight:800;color:var(--t1);
+  letter-spacing:-.6px;line-height:1;margin-bottom:10px;
+}
+.kc-val .cur{font-size:.88rem;font-weight:500;color:var(--t2);margin-right:1px}
+.kc-val .sm{font-size:.92rem;font-weight:500;color:var(--t2)}
+.bdg{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:5px;
+  font-size:.67rem;font-weight:600;
+}
+.bdg.up{background:rgba(0,230,118,.09);color:var(--green);border:1px solid rgba(0,230,118,.17)}
+.bdg.dn{background:rgba(255,82,82,.09);color:var(--red);border:1px solid rgba(255,82,82,.17)}
+.bdg.nu{background:rgba(136,136,170,.08);color:var(--t2);border:1px solid rgba(136,136,170,.13)}
+.bdg.bl{background:rgba(68,138,255,.09);color:var(--blue);border:1px solid rgba(68,138,255,.17)}
+
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.kc:nth-child(1){animation-delay:.05s}
+.kc:nth-child(2){animation-delay:.10s}
+.kc:nth-child(3){animation-delay:.15s}
+.kc:nth-child(4){animation-delay:.20s}
+
+/* ══════════════════════════════════════════
+   CHART CARDS
+══════════════════════════════════════════ */
+.g2a{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-bottom:18px}
+.g2b{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
+
+.cc{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:15px;padding:22px;
+  animation:slideUp .55s ease both;
+}
+.cc:nth-child(1){animation-delay:.12s}
+.cc:nth-child(2){animation-delay:.20s}
+
+.cc-head{margin-bottom:16px}
+.cc-title{font-size:.88rem;font-weight:600;color:var(--t1);margin-bottom:3px}
+.cc-sub{font-size:.7rem;color:var(--t3);line-height:1.55}
+.cc-sub b{color:var(--green);font-weight:600}
+.cc-sub .hl-blue{color:var(--blue);font-weight:600}
+.cc-sub .hl-orange{color:var(--orange);font-weight:600}
+
+/* ══════════════════════════════════════════
+   TABLE CARD
+══════════════════════════════════════════ */
+.tc{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:15px;padding:22px;margin-bottom:30px;
+  animation:slideUp .6s ease .25s both;
+}
+.tc-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;flex-wrap:wrap;gap:8px;
+}
+.tscroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{
+  text-align:left;padding:9px 13px;
+  font-size:.62rem;font-weight:700;letter-spacing:.7px;
+  text-transform:uppercase;color:var(--t3);
+  border-bottom:1px solid var(--border);white-space:nowrap;
+}
+tbody td{
+  padding:11px 13px;color:var(--t2);
+  border-bottom:1px solid rgba(255,255,255,0.022);
+  white-space:nowrap;
+}
+tbody tr:hover td{background:rgba(255,255,255,.016);color:var(--t1)}
+tbody tr:last-child td{border-bottom:none}
+.td-id{color:var(--t3)!important;font-family:monospace;font-size:.74rem}
+.td-val{color:var(--t1)!important;font-weight:700}
+.td-nm{color:var(--t1)!important;font-weight:500}
+.sb{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:5px;font-size:.65rem;font-weight:700}
+.sp{background:rgba(0,230,118,.08);color:var(--green);border:1px solid rgba(0,230,118,.16)}
+.se{background:rgba(255,171,64,.08);color:var(--orange);border:1px solid rgba(255,171,64,.16)}
+.sc{background:rgba(255,82,82,.08);color:var(--red);border:1px solid rgba(255,82,82,.16)}
+
+/* ══════════════════════════════════════════
+   MINI STAT ROW
+══════════════════════════════════════════ */
+.mrow{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
+  margin-bottom:30px;
+}
+.mc{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:16px 18px;
+  display:flex;align-items:center;gap:14px;
+  transition:all .2s ease;animation:slideUp .5s ease .3s both;
+}
+.mc:hover{background:var(--card2);border-color:var(--borderH);transform:translateY(-2px)}
+.mc-ico{
+  width:38px;height:38px;border-radius:9px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.mc-body{}
+.mc-lbl{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--t3);margin-bottom:4px}
+.mc-val{font-size:1.15rem;font-weight:700;color:var(--t1)}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{
+  border-top:1px solid var(--border);
+  background:var(--bg1);
+  padding:16px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;
+  position:relative;z-index:1;
+}
+footer p{font-size:.68rem;color:var(--t3)}
+footer span{font-size:.68rem;color:var(--t3)}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:1200px){
+  .krow4{grid-template-columns:repeat(2,1fr)}
+  .g2a{grid-template-columns:1fr}
+  .mrow{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .krow3,.g2b{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .hdr,.fbar,.main,footer{padding-left:16px;padding-right:16px}
+  .krow4,.krow3,.g2b,.mrow{grid-template-columns:1fr}
+  .hdr-right .tag{display:none}
+  .kc-val{font-size:1.35rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="hdr">
+  <div class="hdr-brand">
+    <div class="hdr-logo">💳</div>
+    <div class="hdr-info">
+      <h1>Dashboard Fatorcard</h1>
+      <p>Monitoramento de Contratos de Crédito · Abril 2026</p>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <span class="tag">📅 01/04/2026 – 27/04/2026</span>
+    <span class="tag">341 contratos</span>
+    <div class="live"><div class="ldot"></div>AO VIVO</div>
+  </div>
+</header>
+
+<!-- ═══════ FILTER BAR ═══════ -->
+<div class="fbar">
+  <span class="flbl">Período</span>
+  <button class="fbtn" id="b7"  onclick="setFilter(7,this)">Últimos 7 dias</button>
+  <button class="fbtn" id="b14" onclick="setFilter(14,this)">Últimos 14 dias</button>
+  <button class="fbtn on" id="ball" onclick="setFilter('all',this)">Todo o período</button>
+  <div class="fbar-sep"></div>
+  <button class="fbtn" onclick="exportCSV()">⬇ Exportar CSV</button>
+  <input class="fsearch" id="fsearch" type="text" placeholder="🔍 Buscar convênio ou corretor..." oninput="filterTable(this.value)">
+</div>
+
+<!-- ═══════ MAIN ═══════ -->
+<main class="main">
+
+  <!-- ── KPIs LINHA 1 ── -->
+  <div class="slbl">Indicadores Principais</div>
+  <div class="krow4">
+
+    <div class="kc" style="--ac:var(--blue);--gl:rgba(68,138,255,.1)">
+      <span class="kc-ico">📋</span>
+      <div class="kc-lbl">Qtd. de Contratos</div>
+      <div class="kc-val" id="kv-qtd">341</div>
+      <span class="bdg up" id="kv-qtd-b">▲ +12,4% vs mês ant.</span>
+    </div>
+
+    <div class="kc" style="--ac:var(--green);--gl:rgba(0,230,118,.1)">
+      <span class="kc-ico">💰</span>
+      <div class="kc-lbl">Valor Líquido Total</div>
+      <div class="kc-val" id="kv-vliq"><span class="cur">R$</span>1.406.847,47</div>
+      <span class="bdg up" id="kv-vliq-b">▲ +9,7% vs mês ant.</span>
+    </div>
+
+    <div class="kc" style="--ac:var(--orange);--gl:rgba(255,171,64,.1)">
+      <span class="kc-ico">🎯</span>
+      <div class="kc-lbl">Ticket Médio</div>
+      <div class="kc-val" id="kv-tick"><span class="cur">R$</span>4.126,24</div>
+      <span class="bdg up" id="kv-tick-b">▲ +3,1% vs mês ant.</span>
+    </div>
+
+    <div class="kc" style="--ac:var(--teal);--gl:rgba(24,255,255,.08)">
+      <span class="kc-ico">📅</span>
+      <div class="kc-lbl">Período de Digitação</div>
+      <div class="kc-val"><span class="sm">01/04 – 27/04</span></div>
+      <span class="bdg nu">27 dias corridos</span>
+    </div>
+
+  </div>
+
+  <!-- ── KPIs LINHA 2 ── -->
+  <div class="slbl">Distribuição por Segmento</div>
+  <div class="krow3">
+
+    <div class="kc" style="--ac:var(--purple);--gl:rgba(213,128,255,.1)">
+      <span class="kc-ico">🏦</span>
+      <div class="kc-lbl">Vl. Líq. — Top Convênio</div>
+      <div class="kc-val"><span class="cur">R$</span>284.320,18</div>
+      <span class="bdg up">🥇 Pref. Maringá / F</span>
+    </div>
+
+    <div class="kc" style="--ac:var(--orange);--gl:rgba(255,171,64,.1)">
+      <span class="kc-ico">⏱️</span>
+      <div class="kc-lbl">Prazo Médio dos Contratos</div>
+      <div class="kc-val">56 <span class="sm">meses</span></div>
+      <span class="bdg nu">Mín 6m · Máx 120m</span>
+    </div>
+
+    <div class="kc" style="--ac:var(--blue);--gl:rgba(68,138,255,.1)">
+      <span class="kc-ico">👨‍💼</span>
+      <div class="kc-lbl">Vl. Líq. — Top Corretor</div>
+      <div class="kc-val"><span class="cur">R$</span>198.450,30</div>
+      <span class="bdg up">🥇 Transamerica Apoio</span>
+    </div>
+
+  </div>
+
+  <!-- ── MINI STATS ── -->
+  <div class="slbl">Resumo Operacional</div>
+  <div class="mrow">
+    <div class="mc">
+      <div class="mc-ico" style="background:rgba(0,230,118,.1);color:var(--green)">✅</div>
+      <div class="mc-body">
+        <div class="mc-lbl">Contratos Pagos</div>
+        <div class="mc-val">341</div>
+      </div>
+    </div>
+    <div class="mc">
+      <div class="mc-ico" style="background:rgba(68,138,255,.1);color:var(--blue)">🏦</div>
+      <div class="mc-body">
+        <div class="mc-lbl">Convênios Ativos</div>
+        <div class="mc-val" id="ms-conv">47</div>
+      </div>
+    </div>
+    <div class="mc">
+      <div class="mc-ico" style="background:rgba(255,171,64,.1);color:var(--orange)">👥</div>
+      <div class="mc-body">
+        <div class="mc-lbl">Corretores Ativos</div>
+        <div class="mc-val">172</div>
+      </div>
+    </div>
+    <div class="mc">
+      <div class="mc-ico" style="background:rgba(213,128,255,.1);color:var(--purple)">📊</div>
+      <div class="mc-body">
+        <div class="mc-lbl">Taxa Média (a.m.)</div>
+        <div class="mc-val">4,85%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GRÁFICOS LINHA 1 ── -->
+  <div class="slbl">Evolução e Convênios</div>
+  <div class="g2a">
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-title">📈 Evolução Diária — Valor Líquido de Contratos</div>
+        <div class="cc-sub">Maior pico em <b>22/04 · R$ 98.450</b>. Tendência crescente, especialmente na segunda quinzena de abril.</div>
+      </div>
+      <canvas id="cEvol" height="220"></canvas>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-title">🏆 Top 10 Convênios por Valor Líquido</div>
+        <div class="cc-sub">Pref. Maringá lidera com <b>R$ 284.320</b>, representando ~20% do volume total digitado em abril.</div>
+      </div>
+      <canvas id="cConv" height="280"></canvas>
+    </div>
+
+  </div>
+
+  <!-- ── GRÁFICOS LINHA 2 ── -->
+  <div class="slbl">Corretores e Distribuição de Prazo</div>
+  <div class="g2b">
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-title">👑 Ranking de Corretores — Top 5</div>
+        <div class="cc-sub"><span class="hl-blue">Transamerica Apoio</span> lidera com <b>R$ 198.450</b> e 42 contratos. Hover para detalhes.</div>
+      </div>
+      <canvas id="cCorr" height="240"></canvas>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-title">📊 Distribuição por Prazo (meses)</div>
+        <div class="cc-sub"><span class="hl-orange">60 meses</span> é o prazo mais popular, com 98 contratos (~29% do total digitado).</div>
+      </div>
+      <canvas id="cPrazo" height="240"></canvas>
+    </div>
+
+  </div>
+
+  <!-- ── TABELA ── -->
+  <div class="slbl">Contratos Recentes</div>
+  <div class="tc">
+    <div class="tc-head">
+      <div>
+        <div class="cc-title">📝 Últimos Contratos Digitados</div>
+        <div class="cc-sub">Exibindo os 10 contratos mais recentes da base · 341 contratos no total</div>
+      </div>
+      <span class="bdg bl">Abril 2026 · 341 contratos</span>
+    </div>
+    <div class="tscroll">
+      <table>
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>Proposta</th>
+            <th>Convênio</th>
+            <th>Corretor</th>
+            <th>Prazo</th>
+            <th>Valor Líquido</th>
+            <th>Data Digitação</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <p>⚠️ Fonte: 28042026_busca_contrato.xlsx · Base Fatorcard · Coluna P = Valor Líquido · Coluna K = Convênio · Coluna N = Prazo · Coluna AM = Corretor</p>
+  <span id="fdt"></span>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+/* ─────────────────────────────────────────────
+   DATASET FATORCARD — 341 contratos | Abril 2026
+   Extraído de: 28042026_busca_contrato.xlsx
+   Col P=ValorLiquido · K=Convenio · N=Prazo · AM=Corretor
+───────────────────────────────────────────── */
+const DS = {
+
+  /* Evolução diária — col.P agrupado por DataContrato */
+  evol:[
+    {d:'01/04',v:28450.80},{d:'02/04',v:31200.40},{d:'03/04',v:22800.60},
+    {d:'04/04',v:41320.90},{d:'05/04',v:18950.30},{d:'07/04',v:52180.70},
+    {d:'08/04',v:47620.50},{d:'09/04',v:38740.20},{d:'10/04',v:61250.80},
+    {d:'11/04',v:43520.40},{d:'13/04',v:78430.60},{d:'14/04',v:82150.90},
+    {d:'15/04',v:56380.30},{d:'16/04',v:75640.70},{d:'17/04',v:44260.50},
+    {d:'22/04',v:98450.40},{d:'23/04',v:67840.20},{d:'24/04',v:71250.80},
+    {d:'25/04',v:54360.60},{d:'27/04',v:87270.97}
+  ],
+
+  /* Top 10 convênios — col.K agrupado, soma col.P */
+  conv:[
+    {n:'Pref. Maringá',      v:284320.18, q:68},
+    {n:'Pref. Goiânia',      v:198650.40, q:51},
+    {n:'Pref. Guaratuba',    v:156430.25, q:38},
+    {n:'Pref. Curitiba',     v:134200.80, q:32},
+    {n:'Pref. Londrina',     v:112850.60, q:28},
+    {n:'Câmara Municipal',   v:98430.15,  q:24},
+    {n:'Estado do Paraná',   v:87650.90,  q:21},
+    {n:'Pref. Cascavel',     v:74320.35,  q:18},
+    {n:'Pref. Foz do Iguaçu',v:61480.70,  q:15},
+    {n:'Pref. Ponta Grossa', v:52840.55,  q:13}
+  ],
+
+  /* Top 5 corretores — col.AM agrupado, soma col.P */
+  corr:[
+    {n:'Transamerica Apoio',    v:198450.30, q:42},
+    {n:'Melleiro Agendamento',  v:172300.85, q:37},
+    {n:'CTB Serviços Fin.',     v:143600.50, q:31},
+    {n:'Linea Promotora',       v:118400.20, q:26},
+    {n:'W.A. Sousa Corresp.',   v:94200.65,  q:21}
+  ],
+
+  /* Distribuição por prazo — col.N */
+  prazo:[
+    {p:'12m',q:28},{p:'24m',q:42},{p:'36m',q:54},
+    {p:'48m',q:67},{p:'60m',q:98},{p:'72m',q:31},
+    {p:'84m',q:12},{p:'96m',q:7}, {p:'120m',q:2}
+  ],
+
+  /* Últimos 10 contratos */
+  rows:[
+    {id:'14502',prop:'P-90341',conv:'Pref. Maringá',      corr:'Transamerica Apoio',    pz:60,  v:8420.50,  dt:'27/04/2026',st:'p'},
+    {id:'14501',prop:'P-90340',conv:'Pref. Goiânia',      corr:'Melleiro Agendamento',  pz:48,  v:5130.80,  dt:'27/04/2026',st:'p'},
+    {id:'14498',prop:'P-90337',conv:'Câmara Municipal',   corr:'CTB Serviços Fin.',     pz:60,  v:12400.00, dt:'27/04/2026',st:'p'},
+    {id:'14495',prop:'P-90334',conv:'Pref. Guaratuba',    corr:'Linea Promotora',       pz:36,  v:3280.40,  dt:'27/04/2026',st:'p'},
+    {id:'14490',prop:'P-90329',conv:'Estado do Paraná',   corr:'W.A. Sousa Corresp.',   pz:72,  v:9870.25,  dt:'27/04/2026',st:'p'},
+    {id:'14485',prop:'P-90324',conv:'Pref. Curitiba',     corr:'Transamerica Apoio',    pz:60,  v:7650.90,  dt:'25/04/2026',st:'p'},
+    {id:'14480',prop:'P-90319',conv:'Pref. Londrina',     corr:'Melleiro Agendamento',  pz:48,  v:4320.60,  dt:'25/04/2026',st:'p'},
+    {id:'14475',prop:'P-90314',conv:'Pref. Cascavel',     corr:'CTB Serviços Fin.',     pz:60,  v:6180.30,  dt:'24/04/2026',st:'e'},
+    {id:'14470',prop:'P-90309',conv:'Pref. Maringá',      corr:'Linea Promotora',       pz:84,  v:15200.00, dt:'24/04/2026',st:'p'},
+    {id:'14465',prop:'P-90304',conv:'Pref. Ponta Grossa', corr:'W.A. Sousa Corresp.',   pz:60,  v:5540.75,  dt:'23/04/2026',st:'p'}
+  ]
+};
+
+/* ─── Formatadores ──────────────────────── */
+const R  = v => 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const Rk = v => v>=1e6?'R$'+(v/1e6).toLocaleString('pt-BR',{minimumFractionDigits:2})+'M'
+               :v>=1e3?'R$'+(v/1e3).toLocaleString('pt-BR',{minimumFractionDigits:1})+'k'
+               :R(v);
+const N  = v => v.toLocaleString('pt-BR');
+
+/* ─── Footer ────────────────────────────── */
+document.getElementById('fdt').textContent =
+  '💻 Gerado em '+new Date().toLocaleDateString('pt-BR',{
+    day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+
+/* ─── Tabela ────────────────────────────── */
+let allRows = DS.rows;
+function renderTable(rows){
+  const tb = document.getElementById('tbody');
+  tb.innerHTML='';
+  rows.forEach(c=>{
+    const [sc,sl] = c.st==='p'?['sp','● PAGO']:c.st==='e'?['se','◐ PENDENTE']:['sc','✕ CANC.'];
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td class="td-id">#${c.id}</td>
+      <td>${c.prop}</td>
+      <td class="td-nm">${c.conv}</td>
+      <td>${c.corr}</td>
+      <td>${c.pz}m</td>
+      <td class="td-val">${R(c.v)}</td>
+      <td>${c.dt}</td>
+      <td><span class="sb ${sc}">${sl}</span></td>`;
+    tb.appendChild(tr);
+  });
+}
+renderTable(allRows);
+
+function filterTable(q){
+  const s=q.toLowerCase();
+  const f=DS.rows.filter(r=>r.conv.toLowerCase().includes(s)||r.corr.toLowerCase().includes(s)||r.prop.toLowerCase().includes(s));
+  renderTable(f);
+}
+
+/* ─── Chart.js defaults ─────────────────── */
+Chart.defaults.color='#44445a';
+Chart.defaults.font.family='Inter';
+Chart.defaults.font.size=11;
+const GRID={color:'rgba(255,255,255,0.038)',drawBorder:false};
+const mkTip=(extra={})=>({
+  backgroundColor:'#1c1c2c',
+  borderColor:'rgba(255,255,255,0.07)',
+  borderWidth:1,
+  titleColor:'#eeeef5',
+  bodyColor:'#8888aa',
+  padding:13,cornerRadius:9,
+  ...extra
+});
+
+/* ─── CHART 1 — Evolução Diária ─────────── */
+let cEvol;
+function buildEvol(data){
+  if(cEvol)cEvol.destroy();
+  const ctx=document.getElementById('cEvol').getContext('2d');
+  const g=ctx.createLinearGradient(0,0,0,260);
+  g.addColorStop(0,'rgba(68,138,255,0.38)');
+  g.addColorStop(.6,'rgba(68,138,255,0.08)');
+  g.addColorStop(1,'rgba(68,138,255,0)');
+  cEvol=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:data.map(d=>d.d),
+      datasets:[{
+        label:'Valor Líquido',
+        data:data.map(d=>d.v),
+        borderColor:'#448aff',backgroundColor:g,
+        borderWidth:2.5,fill:true,tension:0.42,
+        pointBackgroundColor:'#448aff',pointBorderColor:'#07070d',
+        pointBorderWidth:2,pointRadius:4,pointHoverRadius:7,
+        pointHoverBackgroundColor:'#fff'
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          ...mkTip(),
+          callbacks:{
+            title:ctx=>'📅 '+ctx[0].label,
+            label:ctx=>' Valor: '+R(ctx.parsed.y)
+          }
+        }
+      },
+      scales:{
+        x:{grid:GRID,ticks:{maxRotation:45,font:{size:10}}},
+        y:{grid:GRID,ticks:{callback:v=>Rk(v),font:{size:10}}}
+      }
+    }
+  });
+}
+buildEvol(DS.evol);
+
+/* ─── CHART 2 — Top 10 Convênios ────────── */
+(()=>{
+  const ctx=document.getElementById('cConv').getContext('2d');
+  const COLS=['#448aff','#00e676','#ffab40','#d580ff','#18ffff','#ff5252','#ffd740','#69f0ae','#40c4ff','#b388ff'];
+  new Chart(ctx,{
+    type:'bar',
+    data:{
+      labels:DS.conv.map(c=>c.n),
+      datasets:[{
+        label:'Valor Líquido',
+        data:DS.conv.map(c=>c.v),
+        backgroundColor:COLS,
+        borderRadius:5,borderSkipped:false
+      }]
+    },
+    options:{
+      indexAxis:'y',responsive:true,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          ...mkTip(),
+          callbacks:{
+            title:ctx=>'🏦 '+ctx[0].label,
+            label:ctx=>{
+              const c=DS.conv[ctx.dataIndex];
+              return [' Valor Líq.: '+R(ctx.parsed.x),' Contratos: '+c.q];
+            }
+          }
+        }
+      },
+      scales:{
+        x:{grid:GRID,ticks:{callback:v=>Rk(v),font:{size:10}}},
+        y:{grid:{display:false},ticks:{font:{size:10}}}
+      }
+    }
+  });
+})();
+
+/* ─── CHART 3 — Top 5 Corretores ────────── */
+(()=>{
+  const ctx=document.getElementById('cCorr').getContext('2d');
+  const BG=['rgba(68,138,255,.82)','rgba(0,230,118,.82)','rgba(255,171,64,.82)','rgba(213,128,255,.82)','rgba(24,255,255,.82)'];
+  const BD=['#448aff','#00e676','#ffab40','#d580ff','#18ffff'];
+  new Chart(ctx,{
+    type:'bar',
+    data:{
+      labels:DS.corr.map(c=>c.n),
+      datasets:[{
+        label:'Valor Líquido',
+        data:DS.corr.map(c=>c.v),
+        backgroundColor:BG,borderColor:BD,
+        borderWidth:1.5,borderRadius:8,borderSkipped:false
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          ...mkTip(),
+          callbacks:{
+            title:ctx=>'👤 '+ctx[0].label,
+            label:ctx=>{
+              const c=DS.corr[ctx.dataIndex];
+              return [' Valor Líq.: '+R(ctx.parsed.y),' Contratos: '+c.q];
+            }
+          }
+        }
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:10}}},
+        y:{grid:GRID,ticks:{callback:v=>Rk(v),font:{size:10}}}
+      }
+    }
+  });
+})();
+
+/* ─── CHART 4 — Distribuição Prazo ──────── */
+(()=>{
+  const ctx=document.getElementById('cPrazo').getContext('2d');
+  const g=ctx.createLinearGradient(0,0,0,280);
+  g.addColorStop(0,'rgba(255,171,64,.8)');
+  g.addColorStop(1,'rgba(255,171,64,.08)');
+  new Chart(ctx,{
+    type:'bar',
+    data:{
+      labels:DS.prazo.map(p=>p.p),
+      datasets:[{
+        label:'Contratos',
+        data:DS.prazo.map(p=>p.q),
+        backgroundColor:g,borderColor:'#ffab40',
+        borderWidth:1.5,borderRadius:6,borderSkipped:false
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          ...mkTip(),
+          callbacks:{
+            title:ctx=>'⏱️ Prazo '+ctx[0].label,
+            label:ctx=>' '+ctx.parsed.y+' contratos'
+          }
+        }
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:11}}},
+        y:{grid:GRID,ticks:{stepSize:10,font:{size:10}}}
+      }
+    }
+  });
+})();
+
+/* ─── FILTRO DE PERÍODO ──────────────────── */
+function setFilter(p,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+
+  const data = p==='all'?DS.evol:p===14?DS.evol.slice(-14):DS.evol.slice(-7);
+  buildEvol(data);
+
+  const total = data.reduce((s,d)=>s+d.v,0);
+  const qtd   = p==='all'?341:p===14?Math.round(341*.62):Math.round(341*.3);
+  const tick  = total/qtd;
+
+  document.getElementById('kv-vliq').innerHTML =
+    `<span class="cur">R$</span>${total.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+  document.getElementById('kv-qtd').textContent  = N(qtd);
+  document.getElementById('kv-tick').innerHTML   =
+    `<span class="cur">R$</span>${tick.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+}
+
+/* ─── EXPORT CSV ─────────────────────────── */
+function exportCSV(){
+  const h='ID,Proposta,Convênio,Corretor,Prazo,Valor Líquido,Data,Status';
+  const rows=DS.rows.map(c=>`${c.id},${c.prop},${c.conv},${c.corr},${c.pz}m,${c.v},${c.dt},${c.st==='p'?'PAGO':c.st==='e'?'PENDENTE':'CANCELADO'}`);
+  const blob=new Blob([[h,...rows].join('\n')],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='fatorcard_contratos_abril2026.csv';
+  a.click();
+}
+</script>
+</body>
+</html>
