@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>MRTI 13º Carrossel</title>
+<link rel="stylesheet" href="../fonts/local.css">
+<style>
+  :root {
+    --bg0: #070b08; --bg1: #0d1510; --bg2: #142016;
+    --gold: #d6b25a; --gold-hi: #f0d488; --gold-deep: #a9802a; --cream: #f6f0e2; --mute: rgba(246,240,226,.62);
+    --red: #e5452f; --red-hi: #ff8a72; --ink: #0c1310;
+    --serif: 'Cormorant Garamond', Garamond, serif;
+    --play: 'Playfair Display', serif;
+    --sans: 'Inter', Helvetica, Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --metal: linear-gradient(180deg, #fffbe6 0%, #ffe9a8 22%, #f2c766 46%, #d4a03e 62%, #b98a2e 74%, #f3d27a 92%, #fff0bf 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #222; display: flex; flex-direction: column; gap: 40px; padding: 40px; width: max-content; }
+  .slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; color: var(--cream); font-family: var(--sans);
+    background: radial-gradient(ellipse 90% 60% at 50% 30%, #17251a 0%, #0b120d 55%, #050806 100%); font-variant-numeric: lining-nums; }
+  .slide.story { height: 1920px; }
+  .slide::before { content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+  .metal { background: var(--metal); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* header / footer */
+  .hd { position: absolute; left: 80px; right: 80px; top: 64px; display: flex; align-items: center; justify-content: space-between; z-index: 2; }
+  .brand { display: flex; align-items: center; gap: 16px; font-family: var(--sans); font-weight: 600; font-size: 22px; letter-spacing: .42em; color: var(--cream); }
+  .brand img { height: 58px; }
+  .tagrow { display: flex; gap: 12px; align-items: center; }
+  .tag { font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: .22em; color: var(--gold-hi); text-transform: uppercase;
+    padding: 9px 16px 8px; border: 1.5px solid rgba(240,212,136,.45); border-radius: 999px; }
+  .count { font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: .08em; color: var(--mute); }
+  .count b { color: var(--gold-hi); }
+  .ft { position: absolute; left: 80px; right: 80px; bottom: 60px; display: flex; justify-content: space-between; align-items: center; z-index: 2;
+    font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: .26em; color: rgba(246,240,226,.5); text-transform: uppercase; }
+  .ft .dots { display: flex; gap: 9px; }
+  .ft .dots i { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid rgba(240,212,136,.6); }
+  .ft .dots i.on { background: var(--gold-hi); border-color: var(--gold-hi); box-shadow: 0 0 10px rgba(240,212,136,.7); }
+  .ft .swipe { color: var(--gold-hi); }
+
+  /* cover */
+  .cover .big13 { position: absolute; left: 50px; top: 150px; font-family: var(--play); font-weight: 800; font-size: 470px; line-height: .9; letter-spacing: -.04em;
+    filter: drop-shadow(0 4px 3px rgba(40,26,4,.9)) drop-shadow(0 30px 60px rgba(0,0,0,.6)) drop-shadow(0 0 40px rgba(255,214,120,.25)); }
+  .cover .big13 sup { font-size: .42em; vertical-align: top; position: relative; top: .18em; margin-left: .02em; }
+  .cover .crest { position: absolute; right: 70px; top: 190px; width: 330px; opacity: .95; filter: drop-shadow(0 20px 50px rgba(0,0,0,.6)); }
+  .cover .kick { position: absolute; left: 86px; top: 620px; font-family: var(--mono); font-weight: 700; font-size: 26px; letter-spacing: .34em; color: var(--gold-hi); }
+  .cover .title { position: absolute; left: 80px; right: 80px; top: 670px; font-family: var(--serif); font-weight: 600; font-size: 118px; line-height: .98; letter-spacing: -.01em; }
+  .cover .title em { font-style: italic; }
+  .cover .sub { position: absolute; left: 84px; right: 120px; top: 1000px; font-family: var(--sans); font-weight: 500; font-size: 34px; line-height: 1.35; color: var(--mute); }
+  .cover .sub b { color: var(--cream); font-weight: 700; }
+  .cover .dates { position: absolute; left: 80px; top: 1112px; display: flex; gap: 14px; }
+  .pill { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 16px; background: rgba(8,12,9,.75); border: 1.5px solid rgba(240,212,136,.4);
+    font-family: var(--sans); font-weight: 700; font-size: 25px; color: var(--cream); white-space: nowrap; }
+  .pill small { font-family: var(--mono); font-weight: 700; font-size: 18px; letter-spacing: .14em; color: var(--gold-hi); }
+  .pill.red { border-color: rgba(255,138,114,.6); }
+  .pill.red small { color: var(--red-hi); }
+
+  /* question slides: one column that flows between header and footer */
+  .q .col { position: absolute; left: 80px; right: 80px; top: 150px; bottom: 118px; display: flex; flex-direction: column; }
+  .q .num { font-family: var(--play); font-weight: 800; font-size: 150px; line-height: .86; letter-spacing: -.03em; margin-left: -6px;
+    -webkit-text-stroke: 2.5px rgba(240,212,136,.75); color: transparent; }
+  .q .qk { font-family: var(--mono); font-weight: 700; font-size: 22px; letter-spacing: .34em; color: var(--gold-hi); margin-top: 18px; }
+  .q .qt { font-family: var(--serif); font-weight: 600; font-size: 86px; line-height: 1; letter-spacing: -.01em; margin-top: 10px; }
+  .q .qt em { font-style: italic; }
+  .q .body { margin-top: 24px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .grp { margin-bottom: 14px; }
+  .grp .gh { font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: .28em; color: var(--gold-hi); margin-bottom: 10px; }
+  .grp .gh.r { color: var(--red-hi); }
+  .row { display: flex; align-items: flex-start; gap: 20px; padding: 15px 24px; border-radius: 18px; background: rgba(14,22,17,.82); border: 1.5px solid rgba(240,212,136,.18); margin-bottom: 10px; }
+  .row .ic { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 21px; margin-top: 1px; }
+  .ic.ok { background: var(--gold-hi); color: var(--ink); }
+  .ic.no { background: var(--red); color: #fff; }
+  .ic.warn { background: transparent; border: 2px solid var(--gold-hi); color: var(--gold-hi); font-family: var(--serif); font-size: 26px; }
+  .row .tx { font-size: 30px; line-height: 1.25; font-weight: 600; color: var(--cream); }
+  .row .tx small { display: block; font-size: 23px; font-weight: 500; color: var(--mute); margin-top: 3px; line-height: 1.3; }
+  .row.red { border-color: rgba(229,69,47,.35); background: rgba(40,12,8,.55); }
+  .note { margin-top: 16px; padding: 22px 28px; border-radius: 20px;
+    background: linear-gradient(180deg, #f6dc94, #c99f45); color: var(--ink); font-size: 28px; font-weight: 700; line-height: 1.3; box-shadow: 0 20px 50px rgba(0,0,0,.45); }
+  .note b { font-weight: 900; }
+  .note .k { font-family: var(--mono); font-size: 17px; letter-spacing: .26em; font-weight: 700; color: rgba(12,19,16,.65); display: block; margin-bottom: 6px; }
+  /* formula */
+  .formula { padding: 26px 30px 22px; border-radius: 26px; background: rgba(14,22,17,.86); border: 1.5px solid rgba(240,212,136,.5); text-align: center; margin-bottom: 12px; }
+  .formula .f { font-family: var(--play); font-weight: 700; font-size: 54px; line-height: 1.1; }
+  .formula .f i { font-style: normal; color: var(--gold-hi); }
+  .formula .fk { font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: .3em; color: var(--mute); margin-top: 14px; }
+  .ex { padding: 20px 26px; border-radius: 22px; background: rgba(14,22,17,.82); border: 1.5px dashed rgba(240,212,136,.4); }
+  .ex .eh { font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: .28em; color: var(--gold-hi); margin-bottom: 14px; }
+  .ex .steps { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 26px; font-weight: 600; }
+  .ex .steps span { padding: 10px 16px; border-radius: 12px; background: rgba(246,240,226,.06); white-space: nowrap; }
+  .ex .steps i { font-style: normal; color: var(--gold-hi); font-weight: 800; }
+  .ex .res { margin-top: 12px; font-size: 32px; font-weight: 800; }
+  .ex .res b { font-family: var(--play); font-size: 50px; margin-left: 8px; }
+
+  /* parcels */
+  .stat50 { display: flex; align-items: center; gap: 28px; margin-bottom: 14px; }
+  .stat50 .v { font-family: var(--play); font-weight: 800; font-size: 150px; line-height: .85; letter-spacing: -.03em; }
+  .stat50 .t { font-size: 31px; font-weight: 600; line-height: 1.3; }
+  .stat50 .t small { display: block; font-size: 25px; color: var(--mute); font-weight: 500; margin-top: 6px; }
+  .bars { margin-bottom: 8px; }
+  .bar { margin-bottom: 16px; }
+  .bar .bt { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .bar .bt b { font-size: 31px; font-weight: 800; }
+  .bar .bt span { font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: .18em; color: var(--mute); }
+  .bar .track { display: flex; height: 62px; border-radius: 16px; overflow: hidden; background: rgba(246,240,226,.06); }
+  .bar .seg { display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: .1em; }
+  .seg.g { background: linear-gradient(90deg, #b98a2e, #f0d488); color: var(--ink); }
+  .seg.r { background: repeating-linear-gradient(-45deg, rgba(229,69,47,.95) 0 10px, rgba(200,55,36,.95) 10px 20px); color: #fff; }
+  .seg.r2 { background: repeating-linear-gradient(-45deg, rgba(255,138,114,.9) 0 10px, rgba(229,69,47,.8) 10px 20px); color: #fff; }
+
+  /* calendar */
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; margin: 10px 0 56px; }
+  .cal .d { position: relative; border-radius: 18px; padding: 16px 0 18px; text-align: center; background: rgba(14,22,17,.82); border: 1.5px solid rgba(240,212,136,.16); }
+  .cal .d .w { font-family: var(--mono); font-weight: 700; font-size: 17px; letter-spacing: .14em; color: var(--mute); }
+  .cal .d .n { font-family: var(--play); font-weight: 700; font-size: 58px; line-height: 1.1; margin-top: 4px; }
+  .cal .d.pay { background: linear-gradient(180deg, #f6dc94, #c99f45); border-color: #fff0bf; color: var(--ink); box-shadow: 0 0 40px rgba(240,212,136,.4); transform: scale(1.08); }
+  .cal .d.pay .w { color: rgba(12,19,16,.7); }
+  .cal .d.sun { border-color: rgba(229,69,47,.6); background: rgba(40,12,8,.6); }
+  .cal .d.sun .n { color: var(--red-hi); text-decoration: line-through; text-decoration-thickness: 4px; }
+  .cal .d .lab { position: absolute; left: 50%; bottom: -46px; transform: translateX(-50%); white-space: nowrap; font-family: var(--mono); font-weight: 700; font-size: 17px; letter-spacing: .12em; }
+  .cal .d.pay .lab { color: var(--gold-hi); }
+  .cal .d.sun .lab { color: var(--red-hi); }
+
+  /* CTA */
+  .cta .lock { position: absolute; left: 50%; top: 150px; width: 560px; transform: translateX(-50%); filter: drop-shadow(0 20px 50px rgba(0,0,0,.6)); }
+  .cta .h { position: absolute; left: 80px; right: 80px; top: 520px; text-align: center; font-family: var(--serif); font-weight: 600; font-size: 104px; line-height: 1; }
+  .cta .h em { font-style: italic; }
+  .cta .lst { position: absolute; left: 110px; right: 110px; top: 760px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  .cta .lst div { display: flex; align-items: center; gap: 14px; font-size: 28px; font-weight: 600; padding: 16px 20px; border-radius: 16px; background: rgba(14,22,17,.82); border: 1.5px solid rgba(240,212,136,.2); }
+  .cta .lst div::before { content: "✓"; flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-hi); color: var(--ink); font-weight: 900; font-size: 18px; }
+  .wa { position: absolute; left: 50%; top: 960px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 22px; white-space: nowrap;
+    padding: 26px 48px 26px 34px; border-radius: 999px; background: linear-gradient(180deg, #f6dc94, #c99f45); border: 2px solid #fff0bf; color: var(--ink);
+    box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 60px rgba(240,212,136,.35); font-size: 44px; font-weight: 600; }
+  .wa svg { width: 62px; height: 62px; }
+  .wa b { font-family: var(--mono); font-weight: 700; font-size: 44px; background: var(--ink); color: var(--gold-hi); padding: 4px 18px 2px; border-radius: 12px; margin: 0 4px; }
+  .contact { position: absolute; left: 0; right: 0; top: 1106px; text-align: center; font-family: var(--sans); font-size: 25px; letter-spacing: .26em; line-height: 1.9; color: var(--cream); }
+  .contact b { color: var(--gold); font-weight: 600; margin-right: .5em; }
+
+  /* story */
+  .story .crest { position: absolute; left: 50%; top: 260px; width: 170px; transform: translateX(-50%); }
+  .story .k { position: absolute; left: 0; right: 0; top: 500px; text-align: center; font-family: var(--mono); font-weight: 700; font-size: 28px; letter-spacing: .4em; padding-left: .4em; color: var(--gold-hi); }
+  .story .h { position: absolute; left: 70px; right: 70px; top: 556px; text-align: center; font-family: var(--serif); font-weight: 600; font-size: 128px; line-height: .98; }
+  .story .h em { font-style: italic; }
+  .story .slot { position: absolute; left: 140px; right: 140px; top: 1060px; height: 340px; border-radius: 40px; border: 2px dashed rgba(240,212,136,.0); }
+  .story .hint { position: absolute; left: 0; right: 0; top: 990px; text-align: center; font-family: var(--sans); font-weight: 600; font-size: 30px; color: var(--mute); }
+  .story .chips { position: absolute; left: 80px; right: 80px; top: 1430px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .story .chips span { padding: 14px 24px; border-radius: 999px; background: rgba(14,22,17,.85); border: 1.5px solid rgba(240,212,136,.35); font-size: 27px; font-weight: 600; }
+  .story .foot { position: absolute; left: 0; right: 0; bottom: 270px; display: flex; justify-content: center; align-items: center; gap: 16px;
+    font-family: var(--sans); font-weight: 600; font-size: 26px; letter-spacing: .42em; color: var(--cream); }
+  .story .foot img { height: 64px; }
+</style>
+</head>
+<body>
+<script>
+const WA = c => `<svg viewBox="0 0 24 24"><path d="M12 3.2c-4.9 0-8.8 3.6-8.8 8 0 1.7.6 3.3 1.6 4.6L3.7 20.6l5-1.5c1 .4 2.1.6 3.3.6 4.9 0 8.8-3.6 8.8-8.3S16.9 3.2 12 3.2Z" fill="none" stroke="${c}" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.4 10.4h7.2M8.4 13.4h4.6" stroke="${c}" stroke-width="1.7" stroke-linecap="round"/></svg>`;
+const TOTAL = 8;
+const hd = n => `<div class="hd"><div class="brand"><img src="../brand/crest.png"><span>MRTI</span></div>
+  <div class="tagrow"><span class="tag">DP &amp; RH</span><span class="count"><b>${String(n).padStart(2, '0')}</b>/${String(TOTAL).padStart(2, '0')}</span></div></div>`;
+const ft = (n, left, swipe = true) => `<div class="ft"><span>${left}</span><span class="dots">${Array.from({ length: TOTAL }, (_, i) => `<i class="${i + 1 === n ? 'on' : ''}"></i>`).join('')}</span>
+  <span class="swipe">${swipe ? 'ARRASTE →' : ''}</span></div>`;
+const glow = (x, y, s, c) => `<div class="glow" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:${c}"></div>`;
+const row = (ic, tx, sub, cls = '') => `<div class="row ${cls}"><span class="ic ${ic}">${ic === 'ok' ? '✓' : ic === 'no' ? '✕' : '!'}</span><div class="tx">${tx}${sub ? `<small>${sub}</small>` : ''}</div></div>`;
+const Q = (n, title, body, note, extra = '') => `<section class="slide q" id="s${n + 1}">${glow(620, -160, 560, 'rgba(214,178,90,.10)')}${hd(n + 1)}
+  <div class="col"><div class="num">0${n}</div><div class="qk">DÚVIDA ${n} DE 6</div><div class="qt">${title}</div><div class="body">${body}</div>${note ? `<div class="note">${note}</div>` : ''}</div>${extra}
+  ${ft(n + 1, '13º salário · 2026')}</section>`;
+
+let html = '';
+// 1 cover
+html += `<section class="slide cover" id="s1">${glow(-120, 120, 700, 'rgba(214,178,90,.13)')}${glow(700, 900, 500, 'rgba(214,178,90,.06)')}${hd(1)}
+  <img class="crest" src="../brand/crest.png">
+  <div class="big13 metal">13<sup>º</sup></div>
+  <div class="kick">SALÁRIO · GUIA DO PATRÃO 2026</div>
+  <div class="title">6 dúvidas que<br><em class="metal">todo patrão</em> tem</div>
+  <div class="sub">Errar no 13º sai caro: <b>multa por funcionário</b> e processo. Veja as respostas antes de pagar.</div>
+  <div class="dates"><span class="pill"><small>1ª PARCELA</small>até 30/11</span><span class="pill red"><small>2ª PARCELA</small>até 18/12</span></div>
+  ${ft(1, 'Salve este post')}</section>`;
+// 2 who
+html += Q(1, 'Quem tem <em class="metal">direito?</em>',
+  `<div class="grp"><div class="gh">TÊM DIREITO</div>
+     ${row('ok', 'Todo empregado CLT', 'Urbano, rural e doméstico')}
+     ${row('ok', 'Experiência e temporário', 'Recebem proporcional aos meses trabalhados')}
+     ${row('ok', 'Quem pediu demissão', 'Recebe o 13º proporcional na rescisão')}</div>
+   <div class="grp"><div class="gh r">NÃO TÊM</div>
+     ${row('no', 'Estagiário, autônomo e prestador PJ/MEI', 'Não são empregados CLT', 'red')}
+     ${row('no', 'Demitido por justa causa', 'Perde o 13º proporcional do ano', 'red')}</div>`, '');
+// 3 proportional
+html += Q(2, 'Como funciona o <em class="metal">proporcional?</em>',
+  `<div class="formula"><div class="f">(Salário <i>÷</i> 12) <i>×</i> meses</div><div class="fk">1/12 POR MÊS TRABALHADO</div></div>
+   ${row('ok', 'Trabalhou 15 dias ou mais no mês?', 'O mês conta inteiro. Menos de 15 dias: não conta.')}
+   <div class="ex"><div class="eh">EXEMPLO</div>
+     <div class="steps"><span>Admitido em <i>10/03</i></span><span>Salário <i>R$ 2.400</i></span><span>Março conta: <i>22 dias</i></span></div>
+     <div class="res">R$ 200 × 10 meses = <b class="metal">R$ 2.000</b></div></div>`,
+  `<span class="k">ATENÇÃO</span>Horas extras, comissões e adicionais habituais <b>entram pela média</b> no cálculo.`);
+// 4 absences
+html += Q(3, 'Faltas e <em class="metal">afastamentos</em>',
+  `${row('ok', 'Atestado e faltas justificadas', 'Não reduzem o 13º')}
+   ${row('no', 'Faltas sem justificativa', 'Se o mês ficar com menos de 15 dias trabalhados, ele não conta', 'red')}
+   ${row('warn', 'Afastado pelo INSS (doença)', 'A empresa paga o período trabalhado e o INSS paga o período do benefício')}
+   ${row('ok', 'Licença-maternidade', '13º integral: a empresa paga e compensa a parte da licença no INSS')}`,
+  `<span class="k">DICA</span>Guarde os atestados: <b>falta sem comprovante</b> pode tirar um mês inteiro do 13º.`);
+// 5 first parcel
+html += Q(4, '1ª parcela: <em class="metal">sem descontos</em>',
+  `<div class="stat50"><div class="v metal">50%</div><div class="t">Metade do salário do mês anterior<small>Para quem entrou no ano: metade do proporcional</small></div></div>
+   ${row('ok', 'Prazo: até 30/11 (segunda-feira)', 'Pode ser paga de fevereiro até novembro')}
+   ${row('ok', 'Sem desconto de INSS e IR', 'O funcionário recebe o valor cheio')}
+   ${row('warn', 'O FGTS (8%) já incide sobre ela', 'O depósito do FGTS não espera a 2ª parcela')}`,
+  `<span class="k">SABIA?</span>O funcionário pode pedir a 1ª parcela <b>junto com as férias</b>, se solicitar em janeiro.`);
+// 6 second parcel taxes
+html += Q(5, 'INSS e IR <em class="metal">só na 2ª</em>',
+  `<div class="bars">
+     <div class="bar"><div class="bt"><b>1ª parcela</b><span>ATÉ 30/11</span></div><div class="track"><div class="seg g" style="width:100%">50% · SEM DESCONTOS</div></div></div>
+     <div class="bar"><div class="bt"><b>2ª parcela</b><span>ATÉ 18/12</span></div><div class="track"><div class="seg g" style="width:64%">50% − DESCONTOS</div><div class="seg r" style="width:20%">INSS</div><div class="seg r2" style="width:16%">IR</div></div></div></div>
+   ${row('ok', 'Calculados sobre o 13º inteiro', 'E descontados de uma vez só na 2ª parcela')}
+   ${row('warn', 'IR do 13º é separado do salário', 'Tributação exclusiva: não soma com o salário de dezembro')}`,
+  `<span class="k">EVITE RECLAMAÇÃO</span>A 2ª parcela costuma vir <b>menor que a 1ª</b>. Avise a equipe antes do pagamento.`);
+// 7 deadline
+html += Q(6, 'A 2ª vence 20/12. <em class="metal">E agora?</em>',
+  `<div class="cal">
+     <div class="d"><div class="w">SEG</div><div class="n">14</div></div>
+     <div class="d"><div class="w">TER</div><div class="n">15</div></div>
+     <div class="d"><div class="w">QUA</div><div class="n">16</div></div>
+     <div class="d"><div class="w">QUI</div><div class="n">17</div></div>
+     <div class="d pay"><div class="w">SEX</div><div class="n">18</div><div class="lab">PAGUE ATÉ AQUI</div></div>
+     <div class="d"><div class="w">SÁB</div><div class="n">19</div></div>
+     <div class="d sun"><div class="w">DOM</div><div class="n">20</div><div class="lab">VENCIMENTO</div></div></div>
+   
+   ${row('ok', 'Em 2026, o dia 20/12 cai num domingo', 'Prazo em fim de semana: antecipa, nunca adia')}
+   ${row('no', 'Atrasou? Multa por funcionário', 'E o valor dobra em caso de reincidência', 'red')}`,
+  `<span class="k">RESUMO</span>1ª parcela até <b>30/11</b> · 2ª parcela até <b>sexta, 18/12</b>.`);
+// 8 CTA
+html += `<section class="slide cta" id="s8">${glow(240, 40, 600, 'rgba(214,178,90,.12)')}${hd(8)}
+  <img class="lock" src="../brand/lockup.png">
+  <div class="h">Deixa o 13º<br>com a <em class="metal">MRTI.</em></div>
+  <div class="lst"><div>1ª e 2ª parcelas</div><div>Médias e proporcionais</div><div>INSS, IR e FGTS</div><div>Rescisões no prazo</div></div>
+  <div class="wa">${WA('#0c1310')}Mande <b>13</b> no WhatsApp</div>
+  <div class="contact"><div><b>WHATSAPP</b>(35) 91021-6941</div><div><b>SITE</b>WWW.GRUPOMRTI.COM.BR</div></div>
+  ${ft(8, 'DP &amp; RH · MRTI', false)}</section>`;
+// story: question box
+html += `<section class="slide story" id="story">${glow(240, 120, 600, 'rgba(214,178,90,.12)')}
+  <img class="crest" src="../brand/crest.png">
+  <div class="k">13º SALÁRIO</div>
+  <div class="h">Qual a sua<br>dúvida sobre<br>o <em class="metal">13º?</em></div>
+  <div class="hint">A MRTI responde ↓</div>
+  <div class="slot"></div>
+  <div class="chips"><span>Proporcional</span><span>Faltas</span><span>Descontos</span><span>Prazos</span><span>Rescisão</span></div>
+  <div class="foot"><img src="../brand/crest.png"><span>MRTI</span></div></section>`;
+document.body.innerHTML = html;
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>MRTI Telas Abertura</title>
+<link rel="stylesheet" href="../fonts/local.css">
+<style>
+  :root {
+    --gold: #d6b25a; --gold-hi: #f0d488; --cream: #f6f0e2; --mute: rgba(246,240,226,.6); --ink: #0c1310;
+    --red: #e5452f; --red-hi: #ff6a52; --green: #3ccf8e;
+    --serif: 'Cormorant Garamond', Garamond, serif; --play: 'Playfair Display', serif;
+    --sans: 'Inter', Helvetica, Arial, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --metal: linear-gradient(180deg, #fffbe6 0%, #ffe9a8 22%, #f2c766 46%, #d4a03e 62%, #b98a2e 74%, #f3d27a 92%, #fff0bf 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #020302; font-family: var(--sans); color: var(--cream); }
+  .abs { position: absolute; }
+  .hide { display: none !important; }
+
+  /* ---------- scene 1: the laptop opens ---------- */
+  #room { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 50% 52%, #101a12 0%, #050806 60%, #020302 100%); perspective: 1600px; overflow: hidden; }
+  #rig { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; }
+  .base { position: absolute; left: -500px; top: 40px; width: 1000px; height: 600px; transform-origin: 50% 0; transform: rotateX(78deg);
+    background: linear-gradient(180deg, #2a2f2c, #171a18); border-radius: 26px; box-shadow: 0 0 0 2px #3a403c inset; }
+  .base .kb { position: absolute; left: 70px; right: 70px; top: 60px; height: 300px; border-radius: 12px;
+    background: repeating-linear-gradient(90deg, #0d0f0e 0 52px, transparent 52px 60px), repeating-linear-gradient(0deg, #0d0f0e 0 46px, transparent 46px 56px); opacity: .9; }
+  .base .tp { position: absolute; left: 330px; width: 280px; top: 390px; height: 140px; border-radius: 14px; background: #121514; box-shadow: 0 0 0 2px #2c322e inset; }
+  .lid { position: absolute; left: -490px; top: -620px; width: 980px; height: 660px; transform-origin: 50% 100%; transform-style: preserve-3d;
+    background: #1b1f1d; border-radius: 26px 26px 8px 8px; box-shadow: 0 0 0 2px #3a403c inset; }
+  .lid .scr { position: absolute; left: 26px; right: 26px; top: 26px; bottom: 34px; border-radius: 8px; overflow: hidden;
+    background: radial-gradient(ellipse 80% 70% at 50% 45%, #13211a, #040705); }
+  .lid .scr img { position: absolute; left: 50%; top: 46%; width: 170px; transform: translate(-50%, -50%); }
+  .lid .scr .bar { position: absolute; left: 50%; top: 74%; width: 260px; height: 6px; transform: translateX(-50%); border-radius: 3px; background: rgba(246,240,226,.12); overflow: hidden; }
+  .lid .scr .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold-hi); box-shadow: 0 0 12px var(--gold-hi); }
+  .glowfloor { position: absolute; left: -600px; top: 0; width: 1200px; height: 600px; background: radial-gradient(ellipse 50% 40% at 50% 20%, rgba(240,212,136,.25), transparent 70%); }
+  .kick1 { position: absolute; left: 0; right: 0; top: 1360px; text-align: center; font-family: var(--mono); font-weight: 700; font-size: 30px; letter-spacing: .4em; padding-left: .4em; color: var(--gold-hi); }
+
+  /* ---------- scene 2: desktop chaos ---------- */
+  #desk { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(ellipse 90% 60% at 50% 40%, #0f1a14 0%, #070c09 60%, #030504 100%); }
+  #desk .grid { position: absolute; inset: 0; opacity: .25;
+    background-image: linear-gradient(rgba(240,212,136,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(240,212,136,.07) 1px, transparent 1px); background-size: 60px 60px; }
+  .topbar { position: absolute; left: 0; right: 0; top: 0; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 36px;
+    background: rgba(5,8,6,.75); border-bottom: 1px solid rgba(246,240,226,.08); font-family: var(--mono); font-weight: 700; font-size: 22px; color: var(--mute); }
+  .topbar b { color: var(--cream); }
+  .dock { position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); display: flex; gap: 18px; padding: 14px 22px; border-radius: 26px;
+    background: rgba(20,28,23,.75); border: 1px solid rgba(246,240,226,.1); }
+  .dock i { width: 62px; height: 62px; border-radius: 16px; display: block; }
+
+  .win { position: absolute; border-radius: 18px; overflow: hidden; background: rgba(12,18,14,.96); border: 1.5px solid rgba(246,240,226,.14);
+    box-shadow: 0 30px 80px rgba(0,0,0,.65), 0 0 0 1px rgba(0,0,0,.4); transform-origin: 50% 50%; }
+  .win .tb { height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 18px; background: rgba(246,240,226,.05); border-bottom: 1px solid rgba(246,240,226,.08);
+    font-family: var(--mono); font-weight: 700; font-size: 23px; color: var(--mute); white-space: nowrap; }
+  .win .tb .d { width: 14px; height: 14px; border-radius: 50%; }
+  .win .tb .t { margin-left: 12px; overflow: hidden; text-overflow: ellipsis; }
+  .win.alert { border-color: rgba(229,69,47,.7); box-shadow: 0 30px 80px rgba(0,0,0,.65), 0 0 40px rgba(229,69,47,.25); }
+
+  /* extrato */
+  .ext { padding: 14px 22px; font-family: var(--mono); }
+  .ext .r { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed rgba(246,240,226,.08); font-size: 26px; }
+  .ext .r span:first-child { color: var(--cream); }
+  .ext .r .p { color: var(--green); } .ext .r .n { color: var(--red-hi); }
+  .ext .bal { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 14px; padding: 14px 18px; border-radius: 12px; background: rgba(229,69,47,.14); border: 1.5px solid rgba(229,69,47,.5); }
+  .ext .bal span { font-size: 22px; letter-spacing: .2em; color: var(--red-hi); font-weight: 700; }
+  .ext .bal b { font-family: var(--sans); font-size: 56px; font-weight: 900; color: var(--red-hi); }
+
+  /* chart */
+  .chart { position: relative; padding: 16px 22px; }
+  .chart .lab { font-family: var(--mono); font-weight: 700; font-size: 22px; letter-spacing: .14em; color: var(--mute); }
+  .chart .big { font-family: var(--sans); font-weight: 900; font-size: 50px; color: var(--red-hi); margin-top: 4px; }
+  .chart svg { display: block; margin-top: 8px; }
+
+  /* sheet */
+  .sheet { display: grid; grid-template-columns: 56px repeat(5, 1fr); font-family: var(--mono); font-size: 23px; }
+  .sheet div { height: 47px; border-right: 1px solid rgba(246,240,226,.07); border-bottom: 1px solid rgba(246,240,226,.07); display: flex; align-items: center; padding: 0 10px; color: var(--cream); white-space: nowrap; overflow: hidden; }
+  .sheet .h { background: rgba(246,240,226,.05); color: var(--mute); font-weight: 700; justify-content: center; }
+  .sheet .e { color: #fff; background: rgba(229,69,47,.55); font-weight: 700; }
+  .sheet .sel { outline: 3px solid var(--green); outline-offset: -3px; }
+
+  /* video window */
+  .vid { position: relative; height: calc(100% - 56px); background: #000; }
+  .vid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .vid .ctl { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; display: flex; align-items: center; gap: 16px; padding: 0 18px; background: linear-gradient(transparent, rgba(0,0,0,.8)); }
+  .vid .ctl .pl { width: 0; height: 0; border-left: 18px solid #fff; border-top: 11px solid transparent; border-bottom: 11px solid transparent; }
+  .vid .ctl .tr { flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.25); position: relative; overflow: hidden; }
+  .vid .ctl .tr i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold-hi); }
+  .vid .ctl span { font-family: var(--mono); font-size: 17px; color: #fff; }
+  .vid .rec { position: absolute; left: 16px; top: 14px; display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-weight: 700; font-size: 17px; color: #fff; letter-spacing: .1em;
+    padding: 6px 12px; border-radius: 8px; background: rgba(0,0,0,.55); }
+  .vid .rec i { width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+
+  /* notifications */
+  .ntf { position: absolute; right: 22px; width: 610px; display: flex; gap: 18px; align-items: center; padding: 20px 22px; border-radius: 20px;
+    background: rgba(24,30,26,.94); border: 1.5px solid rgba(246,240,226,.14); box-shadow: 0 20px 50px rgba(0,0,0,.55); }
+  .ntf .ic { flex: none; width: 62px; height: 62px; border-radius: 14px; display: grid; place-items: center; font-weight: 900; font-size: 28px; color: #fff; background: var(--red); }
+  .ntf .ic.y { background: #d9a13a; color: var(--ink); }
+  .ntf .tt { font-weight: 800; font-size: 30px; color: var(--cream); }
+  .ntf .ds { font-size: 22px; color: var(--mute); margin-top: 3px; }
+  .ntf .tm { margin-left: auto; align-self: flex-start; font-family: var(--mono); font-size: 16px; color: var(--mute); }
+
+  .cursor { position: absolute; width: 40px; height: 52px; z-index: 50; filter: drop-shadow(0 4px 6px rgba(0,0,0,.6)); }
+  .ripple { position: absolute; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; border: 3px solid var(--gold-hi); z-index: 49; }
+
+  /* headline */
+  .scrim { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 45% at 50% 50%, rgba(3,5,4,.88), rgba(3,5,4,.55) 70%, rgba(3,5,4,.35)); z-index: 60; }
+  .head { position: absolute; left: 40px; right: 40px; top: 760px; text-align: center; z-index: 61; }
+  .head .l1 { font-family: var(--serif); font-weight: 600; font-size: 112px; line-height: 1; color: var(--cream); text-shadow: 0 8px 40px rgba(0,0,0,.7); }
+  .head .l2 { margin-top: 14px; font-family: var(--play); font-style: italic; font-weight: 700; font-size: 132px; line-height: 1.05;
+    background: var(--metal); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 3px 2px rgba(40,26,4,.9)) drop-shadow(0 0 30px rgba(255,214,120,.4)); padding: 0 .06em; }
+  .flash { position: absolute; inset: 0; background: #fff; z-index: 90; }
+  .rgb { position: absolute; inset: 0; z-index: 80; mix-blend-mode: screen; }
+</style>
+</head>
+<body>
+<div id="room">
+  <div id="rig">
+    <div class="glowfloor"></div>
+    <div class="base"><div class="kb"></div><div class="tp"></div></div>
+    <div class="lid"><div class="scr"><img src="../brand/crest.png"><div class="bar"><i></i></div></div></div>
+  </div>
+  <div class="kick1">SEGUNDA-FEIRA · 09:41</div>
+</div>
+<div id="desk">
+  <div class="grid"></div>
+  <div class="topbar"><span><b>Financeiro</b> · Conta PJ</span><span>SEG 09:41 · 23%</span></div>
+  <div class="win alert" id="w1" style="left:26px; top:96px; width:730px; height:690px">
+    <div class="tb"><i class="d" style="background:#ff5f57"></i><i class="d" style="background:#febc2e"></i><i class="d" style="background:#28c840"></i><span class="t">Extrato · Conta PJ</span></div>
+    <div class="ext"></div>
+  </div>
+  <div class="win" id="w2" style="left:320px; top:640px; width:735px; height:480px">
+    <div class="tb"><i class="d" style="background:#ff5f57"></i><i class="d" style="background:#febc2e"></i><i class="d" style="background:#28c840"></i><span class="t">Fluxo de caixa · próximos 30 dias</span></div>
+    <div class="chart"><div class="lab">PREVISÃO DE CAIXA</div><div class="big">Negativo em 12 dias</div>
+      <svg width="690" height="290" viewBox="0 0 606 250" preserveAspectRatio="none"><line x1="0" y1="150" x2="606" y2="150" stroke="rgba(246,240,226,.25)" stroke-dasharray="8 8"/>
+        <rect x="0" y="150" width="606" height="100" fill="rgba(229,69,47,.12)"/>
+        <path id="cpath" d="M0 40 C 60 30, 90 70, 140 62 S 230 40, 270 90 S 360 110, 400 140 S 500 190, 606 228" fill="none" stroke="#ff6a52" stroke-width="5" stroke-linecap="round"/>
+        <circle id="cdot" r="10" fill="#ff6a52"/></svg></div>
+  </div>
+  <div class="win" id="w3" style="left:26px; top:1030px; width:770px; height:480px">
+    <div class="tb"><i class="d" style="background:#ff5f57"></i><i class="d" style="background:#febc2e"></i><i class="d" style="background:#28c840"></i><span class="t">controle_final_v7_AGORA_VAI.xlsx</span></div>
+    <div class="sheet"></div>
+  </div>
+  <div class="win" id="w4" style="left:320px; top:1290px; width:735px; height:590px">
+    <div class="tb"><i class="d" style="background:#ff5f57"></i><i class="d" style="background:#febc2e"></i><i class="d" style="background:#28c840"></i><span class="t">diretor_mrti.mp4</span></div>
+    <div class="vid"><img src="../recover/site_6.jpg"><div class="rec"><i></i>AO VIVO</div><div class="ctl"><span class="pl"></span><div class="tr"><i></i></div><span>00:12</span></div></div>
+  </div>
+  <div id="ntfs"></div>
+  <svg class="cursor" viewBox="0 0 40 52"><path d="M3 2 L3 42 L13 33 L20 49 L27 46 L20 30 L34 30 Z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/></svg>
+  <div class="ripple"></div>
+  <div class="scrim"></div>
+  <div class="head"><div class="l1">Sua empresa fatura.</div><div class="l2">Mas cadê o dinheiro?</div></div>
+  <div class="rgb"></div>
+</div>
+<div class="flash"></div>
+<script>
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const easeBack = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+
+// ---- timeline (seconds) ----
+const T = { lid0: .15, lid1: 1.05, boot: .75, push0: 1.15, push1: 1.95, desk: 1.80,
+  w1: 2.00, w2: 2.70, w3: 3.30, w4: 4.10, ntf: [4.50, 4.85, 5.20, 5.55], head1: 6.10, head2: 6.75, end: 8.40 };
+
+const ROWS = [['PIX recebido · Cliente', '+R$ 4.200,00', 'p'], ['Fornecedor · Boleto', '−R$ 6.850,00', 'n'], ['Folha de pagamento', '−R$ 18.400,00', 'n'],
+  ['DAS · Simples Nacional', '−R$ 3.920,00', 'n'], ['Tarifas bancárias', '−R$ 189,90', 'n'], ['Cartão empresarial', '−R$ 7.320,10', 'n']];
+const ext = $('.ext');
+ext.innerHTML = ROWS.map(r => `<div class="r"><span></span><span class="${r[2]}"></span></div>`).join('') + `<div class="bal"><span>SALDO</span><b></b></div>`;
+const extRows = $$('.ext .r'), bal = $('.ext .bal'), balv = $('.ext .bal b');
+
+const COLS = ['A', 'B', 'C', 'D', 'E'];
+const CELLS = [['Mês', 'Receita', 'Custos', 'Imposto', 'Lucro?'], ['Set', '84.300', '61.900', '#REF!', '#REF!'], ['Out', '91.200', '??', '6.410', '#DIV/0!'],
+  ['Nov', '88.750', '72.040', '#N/D', '#REF!'], ['Total', '=SOMA(B2', '#VALOR!', '', ''], ['', '', '', '', ''], ['', '', '', '', ''], ['', '', '', '', '']];
+const sheet = $('.sheet');
+let sh = `<div class="h"></div>` + COLS.map(c => `<div class="h">${c}</div>`).join('');
+CELLS.forEach((r, i) => { sh += `<div class="h">${i + 1}</div>` + r.map(v => `<div data-v="${v}"></div>`).join(''); });
+sheet.innerHTML = sh;
+const cells = $$('.sheet div[data-v]');
+
+const NTF = [['!', 'DAS vence HOJE', 'Simples Nacional · R$ 3.920,00', 'agora', ''], ['$', 'Saldo insuficiente', 'Pagamento de fornecedor recusado', 'agora', ''],
+  ['!', 'Notificação recebida', 'Processo trabalhista · Vara do Trabalho', '2 min', ''], ['?', 'Contador', '"Me manda o extrato de outubro?"', '5 min', 'y']];
+$('#ntfs').innerHTML = NTF.map((n, i) => `<div class="ntf" style="top:${90 + i * 134}px"><div class="ic ${n[4]}">${n[0]}</div><div><div class="tt">${n[1]}</div><div class="ds">${n[2]}</div></div><div class="tm">${n[3]}</div></div>`).join('');
+const ntfs = $$('.ntf');
+const cpath = $('#cpath'), CL = cpath.getTotalLength(); cpath.style.strokeDasharray = CL;
+
+// cursor keyframes [t, x, y, click]
+const CUR = [[2.0, 760, 1500, 0], [2.6, 600, 420, 1], [3.2, 840, 860, 1], [3.9, 420, 1240, 1], [4.6, 760, 1560, 1], [5.4, 860, 430, 1], [6.0, 900, 900, 0]];
+function cursorAt(t) {
+  if (t <= CUR[0][0]) return [CUR[0][1], CUR[0][2], -1];
+  for (let i = 0; i < CUR.length - 1; i++) {
+    const a = CUR[i], b = CUR[i + 1];
+    if (t < b[0]) { const k = easeInOut(prog(t, a[0], b[0] - .12)); return [a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k, b[3] ? b[0] - .1 : -1]; }
+  }
+  const l = CUR[CUR.length - 1]; return [l[1], l[2], -1];
+}
+
+function pop(el, t0, t, from = .82) {
+  const on = t >= t0; el.style.display = on ? '' : 'none'; if (!on) return 0;
+  const k = easeBack(prog(t, t0, t0 + .32));
+  el.style.opacity = clamp(prog(t, t0, t0 + .12) * 1.2);
+  el.style.transform = `scale(${from + (1 - from) * k})`;
+  el.style.filter = (t - t0) < .14 ? `blur(${(1 - prog(t, t0, t0 + .14)) * 8}px) brightness(${1 + .6 * (1 - prog(t, t0, t0 + .14))})` : '';
+  return k;
+}
+
+window.render = t => {
+  // scene 1
+  const room = $('#room'), desk = $('#desk');
+  const lidK = easeOut(prog(t, T.lid0, T.lid1));
+  $('.lid').style.transform = `rotateX(${-88 + 80 * lidK}deg)`;
+  const boot = prog(t, T.boot, T.boot + .5);
+  $('.lid .scr').style.opacity = .15 + .85 * prog(t, T.boot - .2, T.boot + .1);
+  $('.lid .scr img').style.opacity = easeOut(boot); $('.lid .scr img').style.filter = `drop-shadow(0 0 ${30 * boot}px rgba(240,212,136,.6))`;
+  $('.lid .scr .bar i').style.width = (100 * easeInOut(prog(t, T.boot + .1, T.push1))) + '%';
+  const push = easeInOut(prog(t, T.push0, T.push1));
+  $('#rig').style.transform = `translate(-50%, 0) translateY(${40 + 360 * push}px) scale(${1.0 + 2.5 * push}) rotateX(${8 - 8 * push}deg)`;
+  $('.kick1').style.opacity = easeOut(prog(t, .5, .9)) * (1 - prog(t, T.push0, T.push0 + .3));
+  room.style.opacity = 1 - prog(t, T.desk, T.desk + .2);
+  room.classList.toggle('hide', t > T.desk + .25);
+  // scene 2
+  desk.classList.toggle('hide', t < T.desk);
+  desk.style.opacity = prog(t, T.desk, T.desk + .2);
+  pop($('#w1'), T.w1, t);
+  extRows.forEach((r, i) => {
+    const a = T.w1 + .18 + i * .16, k = prog(t, a, a + .14);
+    r.style.opacity = t >= a ? 1 : 0;
+    const L = ROWS[i][0], V = ROWS[i][1];
+    r.children[0].textContent = L.slice(0, Math.round(L.length * k)); r.children[1].textContent = k >= 1 ? V : '';
+  });
+  const bt = T.w1 + .18 + ROWS.length * .16 + .05;
+  bal.style.opacity = t >= bt ? 1 : 0;
+  const bv = 12480 * easeOut(prog(t, bt, bt + .5));
+  balv.textContent = '−R$ ' + bv.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  balv.style.opacity = t > bt + .5 ? (Math.sin(t * 12) > -.3 ? 1 : .35) : 1;
+  pop($('#w2'), T.w2, t);
+  const ck = easeInOut(prog(t, T.w2 + .2, T.w2 + 1.4));
+  cpath.style.strokeDashoffset = CL * (1 - ck);
+  const pt = cpath.getPointAtLength(CL * ck); $('#cdot').setAttribute('cx', pt.x); $('#cdot').setAttribute('cy', pt.y);
+  $('#cdot').style.opacity = t > T.w2 + .2 ? 1 : 0;
+  pop($('#w3'), T.w3, t);
+  cells.forEach((c, i) => { const a = T.w3 + .15 + i * .03; c.textContent = t >= a ? c.dataset.v : ''; c.classList.toggle('e', t >= a && c.dataset.v.startsWith('#')); c.classList.toggle('sel', i === Math.min(cells.length - 1, Math.floor((t - T.w3 - .15) / .03)) && t < T.w3 + 1.6); });
+  pop($('#w4'), T.w4, t);
+  $('.vid .ctl .tr i').style.width = (8 + 60 * prog(t, T.w4, T.end)) + '%';
+  $('.vid img').style.transform = `scale(${1.05 + .05 * prog(t, T.w4, T.end)})`;
+  $('.vid .rec i').style.opacity = Math.sin(t * 8) > 0 ? 1 : .2;
+  ntfs.forEach((n, i) => {
+    const a = T.ntf[i], on = t >= a; n.style.display = on ? '' : 'none'; if (!on) return;
+    const k = easeBack(prog(t, a, a + .35)); n.style.transform = `translateX(${(1 - k) * 560}px)`; n.style.opacity = clamp(prog(t, a, a + .1) * 1.4);
+  });
+  // cursor
+  const [cx, cy, clickT] = cursorAt(t);
+  const cur = $('.cursor'); cur.style.left = cx + 'px'; cur.style.top = cy + 'px'; cur.style.opacity = prog(t, T.desk + .2, T.desk + .4) * (1 - prog(t, T.head1 - .2, T.head1));
+  let rp = -1; for (const c of CUR) if (c[3] && t >= c[0] - .1 && t < c[0] + .3) rp = prog(t, c[0] - .1, c[0] + .3);
+  const ripple = $('.ripple'); ripple.style.display = rp >= 0 ? '' : 'none';
+  if (rp >= 0) { ripple.style.left = cx + 'px'; ripple.style.top = cy + 'px'; ripple.style.transform = `scale(${.3 + rp})`; ripple.style.opacity = 1 - rp; }
+  // chaos: tiny shake grows as alerts pile up
+  const chaos = prog(t, T.ntf[0], T.head1);
+  const shk = (t > T.ntf[0] && t < T.head1 + .2) ? 3 * chaos : 0;
+  $$('.win').forEach((w, i) => { if (w.style.display !== 'none') w.style.translate = `${Math.sin(t * 37 + i) * shk}px ${Math.cos(t * 41 + i * 2) * shk}px`; });
+  // headline
+  const sc = easeOut(prog(t, T.head1 - .15, T.head1 + .25));
+  $('.scrim').style.opacity = sc; $('.scrim').style.display = sc > 0 ? '' : 'none';
+  const l1 = easeBack(prog(t, T.head1, T.head1 + .35)), l2 = easeBack(prog(t, T.head2, T.head2 + .35));
+  $('.head .l1').style.opacity = clamp(l1 * 1.5) * (t >= T.head1 ? 1 : 0); $('.head .l1').style.transform = `translateY(${(1 - l1) * 40}px)`;
+  $('.head .l2').style.opacity = clamp(l2 * 1.5) * (t >= T.head2 ? 1 : 0); $('.head .l2').style.transform = `scale(${1.3 - .3 * l2})`;
+  // glitch on the second line + flash out
+  const g = t >= T.head2 && t < T.head2 + .25 ? 1 - prog(t, T.head2, T.head2 + .25) : 0;
+  $('.rgb').style.background = g ? `linear-gradient(${(t * 900) % 360}deg, rgba(255,40,40,${.18 * g}), transparent 40%, rgba(40,255,255,${.14 * g}))` : 'none';
+  $('#desk').style.transform = g ? `translate(${Math.sin(t * 160) * 14 * g}px, 0)` : '';
+  const fl = Math.max(Math.exp(-Math.max(0, t - T.desk) * 14) * (t >= T.desk ? .55 : 0), t >= T.head2 ? Math.exp(-(t - T.head2) * 10) * .35 : 0, Math.sin(Math.PI * prog(t, T.end - .25, T.end)) * .9);
+  $('.flash').style.opacity = fl;
+  return true;
+};
+window.render(0);
+</script>
+</body>
+</html>

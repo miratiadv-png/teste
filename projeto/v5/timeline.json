@@ -1,0 +1,2363 @@
+{
+ "fps": 30,
+ "total": 58.64,
+ "videoEnd": 54.64,
+ "endCard": 54.64,
+ "clips": {
+  "c1": {
+   "video": "v2",
+   "start": 3.4,
+   "dur": 3.37,
+   "parts": [
+    [
+     0.55,
+     3.92,
+     0.0
+    ]
+   ],
+   "crop": [
+    0,
+    0.0,
+    1,
+    1.0
+   ],
+   "file": "diretor_mrti.mp4",
+   "label": null,
+   "nframes": 101
+  },
+  "c2": {
+   "video": "v1",
+   "start": 8.3,
+   "dur": 3.2,
+   "parts": [
+    [
+     35.1,
+     38.3,
+     0.0
+    ]
+   ],
+   "crop": [
+    0,
+    0.0,
+    1,
+    0.64
+   ],
+   "file": "faturamento_3_meses.mp4",
+   "label": [
+    "DOR 01",
+    "Faturamento"
+   ],
+   "nframes": 96
+  },
+  "c3": {
+   "video": "v2",
+   "start": 11.66,
+   "dur": 4.4,
+   "parts": [
+    [
+     68.3,
+     72.7,
+     0.0
+    ]
+   ],
+   "crop": [
+    0,
+    0.49,
+    1,
+    0.84
+   ],
+   "file": "lucrei_10_mil.mp4",
+   "label": [
+    "DOR 02",
+    "Lucro"
+   ],
+   "nframes": 132
+  },
+  "c4": {
+   "video": "v3",
+   "start": 16.22,
+   "dur": 5.08,
+   "parts": [
+    [
+     35.5,
+     40.1,
+     0.0
+    ],
+    [
+     40.7,
+     41.18,
+     4.6
+    ]
+   ],
+   "crop": [
+    0,
+    0.24,
+    1,
+    0.64
+   ],
+   "file": "margem_ou_markup.mp4",
+   "label": [
+    "DOR 03",
+    "Precificação"
+   ],
+   "nframes": 152
+  },
+  "c5": {
+   "video": "v6",
+   "start": 21.46,
+   "dur": 6.53,
+   "parts": [
+    [
+     66.3,
+     70.16,
+     0.0
+    ],
+    [
+     71.38,
+     74.05,
+     3.86
+    ]
+   ],
+   "crop": [
+    0,
+    0.32,
+    1,
+    0.71
+   ],
+   "file": "processo_trabalhista.mp4",
+   "label": [
+    "DOR 04",
+    "Passivo trabalhista"
+   ],
+   "nframes": 196
+  },
+  "c6": {
+   "video": "v4",
+   "start": 28.15,
+   "dur": 3.18,
+   "parts": [
+    [
+     4.5,
+     7.68,
+     0.0
+    ]
+   ],
+   "crop": [
+    0,
+    0.3,
+    1,
+    0.69
+   ],
+   "file": "caixa_13_salario.mp4",
+   "label": [
+    "DOR 05",
+    "Caixa"
+   ],
+   "nframes": 95
+  },
+  "c7": {
+   "video": "v5",
+   "start": 31.49,
+   "dur": 6.06,
+   "parts": [
+    [
+     4.2,
+     8.96,
+     0.0
+    ],
+    [
+     16.2,
+     17.5,
+     4.76
+    ]
+   ],
+   "crop": [
+    0,
+    0.2,
+    1,
+    0.74
+   ],
+   "file": "voce_faz_tudo.mp4",
+   "label": [
+    "DOR 06",
+    "Sobrecarga"
+   ],
+   "nframes": 182
+  },
+  "c8": {
+   "video": "v5",
+   "start": 38.15,
+   "dur": 4.9,
+   "parts": [
+    [
+     28.5,
+     33.4,
+     0.0
+    ]
+   ],
+   "crop": [
+    0,
+    0.19,
+    1,
+    0.72
+   ],
+   "file": "mrti.mp4",
+   "label": null,
+   "nframes": 147
+  },
+  "c9": {
+   "video": "v5",
+   "start": 43.17,
+   "dur": 9.59,
+   "parts": [
+    [
+     34.8,
+     35.98,
+     0.0
+    ],
+    [
+     38.55,
+     46.96,
+     1.18
+    ]
+   ],
+   "crop": [
+    0,
+    0.35,
+    1,
+    0.74
+   ],
+   "file": "mrti_solucoes.mp4",
+   "label": null,
+   "nframes": 288
+  },
+  "c10": {
+   "video": "v6",
+   "start": 52.91,
+   "dur": 1.63,
+   "parts": [
+    [
+     134.45,
+     136.08,
+     0.0
+    ]
+   ],
+   "crop": [
+    0,
+    0.36,
+    1,
+    0.73
+   ],
+   "file": "chama_a_mrti.mp4",
+   "label": null,
+   "nframes": 49
+  }
+ },
+ "order": [
+  "c2",
+  "c3",
+  "c4",
+  "c5",
+  "c6",
+  "c7"
+ ],
+ "segments": [
+  {
+   "clip": "c1",
+   "video": "v2",
+   "src_start": 0.55,
+   "src_end": 3.92,
+   "out_start": 3.4,
+   "out_end": 6.77,
+   "local": 0.0
+  },
+  {
+   "clip": "c2",
+   "video": "v1",
+   "src_start": 35.1,
+   "src_end": 38.3,
+   "out_start": 8.3,
+   "out_end": 11.5,
+   "local": 0.0
+  },
+  {
+   "clip": "c3",
+   "video": "v2",
+   "src_start": 68.3,
+   "src_end": 72.7,
+   "out_start": 11.66,
+   "out_end": 16.06,
+   "local": 0.0
+  },
+  {
+   "clip": "c4",
+   "video": "v3",
+   "src_start": 35.5,
+   "src_end": 40.1,
+   "out_start": 16.22,
+   "out_end": 20.82,
+   "local": 0.0
+  },
+  {
+   "clip": "c4",
+   "video": "v3",
+   "src_start": 40.7,
+   "src_end": 41.18,
+   "out_start": 20.82,
+   "out_end": 21.3,
+   "local": 4.6
+  },
+  {
+   "clip": "c5",
+   "video": "v6",
+   "src_start": 66.3,
+   "src_end": 70.16,
+   "out_start": 21.46,
+   "out_end": 25.32,
+   "local": 0.0
+  },
+  {
+   "clip": "c5",
+   "video": "v6",
+   "src_start": 71.38,
+   "src_end": 74.05,
+   "out_start": 25.32,
+   "out_end": 27.99,
+   "local": 3.86
+  },
+  {
+   "clip": "c6",
+   "video": "v4",
+   "src_start": 4.5,
+   "src_end": 7.68,
+   "out_start": 28.15,
+   "out_end": 31.33,
+   "local": 0.0
+  },
+  {
+   "clip": "c7",
+   "video": "v5",
+   "src_start": 4.2,
+   "src_end": 8.96,
+   "out_start": 31.49,
+   "out_end": 36.25,
+   "local": 0.0
+  },
+  {
+   "clip": "c7",
+   "video": "v5",
+   "src_start": 16.2,
+   "src_end": 17.5,
+   "out_start": 36.25,
+   "out_end": 37.55,
+   "local": 4.76
+  },
+  {
+   "clip": "c8",
+   "video": "v5",
+   "src_start": 28.5,
+   "src_end": 33.4,
+   "out_start": 38.15,
+   "out_end": 43.05,
+   "local": 0.0
+  },
+  {
+   "clip": "c9",
+   "video": "v5",
+   "src_start": 34.8,
+   "src_end": 35.98,
+   "out_start": 43.17,
+   "out_end": 44.35,
+   "local": 0.0
+  },
+  {
+   "clip": "c9",
+   "video": "v5",
+   "src_start": 38.55,
+   "src_end": 46.96,
+   "out_start": 44.35,
+   "out_end": 52.76,
+   "local": 1.18
+  },
+  {
+   "clip": "c10",
+   "video": "v6",
+   "src_start": 134.45,
+   "src_end": 136.08,
+   "out_start": 52.91,
+   "out_end": 54.54,
+   "local": 0.0
+  }
+ ],
+ "captions": [
+  {
+   "start": 3.49,
+   "end": 4.07,
+   "words": [
+    {
+     "w": "eu",
+     "s": 3.53,
+     "e": 3.63,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "tô",
+     "s": 3.63,
+     "e": 3.73,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vendendo",
+     "s": 3.73,
+     "e": 4.07,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 4.03,
+   "end": 4.75,
+   "words": [
+    {
+     "w": "muito",
+     "s": 4.07,
+     "e": 4.37,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "nossa",
+     "s": 4.51,
+     "e": 4.65,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 4.71,
+   "end": 4.99,
+   "words": [
+    {
+     "w": "eu",
+     "s": 4.75,
+     "e": 4.83,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "tô",
+     "s": 4.79,
+     "e": 4.87,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "ficando",
+     "s": 4.83,
+     "e": 4.99,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 4.95,
+   "end": 5.55,
+   "words": [
+    {
+     "w": "rico",
+     "s": 4.99,
+     "e": 5.33,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 5.51,
+   "end": 5.89,
+   "words": [
+    {
+     "w": "Não",
+     "s": 5.55,
+     "e": 5.67,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "você",
+     "s": 5.77,
+     "e": 5.85,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "é",
+     "s": 5.85,
+     "e": 5.93,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 5.85,
+   "end": 6.95,
+   "words": [
+    {
+     "w": "dublê",
+     "s": 5.89,
+     "e": 6.25,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "de",
+     "s": 6.25,
+     "e": 6.39,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "rico",
+     "s": 6.39,
+     "e": 6.65,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 8.3,
+   "end": 8.66,
+   "words": [
+    {
+     "w": "Se",
+     "s": 8.34,
+     "e": 8.54,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "eu",
+     "s": 8.54,
+     "e": 8.62,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "te",
+     "s": 8.58,
+     "e": 8.66,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 8.62,
+   "end": 9.3,
+   "words": [
+    {
+     "w": "perguntar",
+     "s": 8.66,
+     "e": 9.02,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "o",
+     "s": 9.02,
+     "e": 9.14,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "seu",
+     "s": 9.14,
+     "e": 9.3,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 9.26,
+   "end": 9.96,
+   "words": [
+    {
+     "w": "faturamento",
+     "s": 9.3,
+     "e": 9.8,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "dos",
+     "s": 9.8,
+     "e": 9.96,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 9.92,
+   "end": 10.74,
+   "words": [
+    {
+     "w": "últimos",
+     "s": 9.96,
+     "e": 10.2,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "três",
+     "s": 10.2,
+     "e": 10.42,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "meses",
+     "s": 10.42,
+     "e": 10.68,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 10.7,
+   "end": 11.26,
+   "words": [
+    {
+     "w": "você",
+     "s": 10.74,
+     "e": 10.86,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "sabe",
+     "s": 10.86,
+     "e": 11.14,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "me",
+     "s": 11.14,
+     "e": 11.26,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 11.22,
+   "end": 11.72,
+   "words": [
+    {
+     "w": "dizer?",
+     "s": 11.26,
+     "e": 11.44,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 11.68,
+   "end": 12.3,
+   "words": [
+    {
+     "w": "Nossa",
+     "s": 11.72,
+     "e": 11.94,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "lucrei",
+     "s": 12.08,
+     "e": 12.3,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 12.26,
+   "end": 12.84,
+   "words": [
+    {
+     "w": "10 mil",
+     "s": 12.3,
+     "e": 12.76,
+     "key": false,
+     "num": true
+    }
+   ]
+  },
+  {
+   "start": 12.8,
+   "end": 13.2,
+   "words": [
+    {
+     "w": "Não",
+     "s": 12.84,
+     "e": 13.0,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 13.16,
+   "end": 13.82,
+   "words": [
+    {
+     "w": "Você",
+     "s": 13.2,
+     "e": 13.38,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "esqueceu",
+     "s": 13.38,
+     "e": 13.72,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "que",
+     "s": 13.72,
+     "e": 13.82,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 13.78,
+   "end": 14.02,
+   "words": [
+    {
+     "w": "você",
+     "s": 13.82,
+     "e": 13.9,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "tem",
+     "s": 13.88,
+     "e": 14.02,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 13.98,
+   "end": 14.58,
+   "words": [
+    {
+     "w": "funcionário",
+     "s": 14.02,
+     "e": 14.46,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "pra",
+     "s": 14.46,
+     "e": 14.58,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 14.54,
+   "end": 15.12,
+   "words": [
+    {
+     "w": "pagar",
+     "s": 14.58,
+     "e": 14.86,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "que",
+     "s": 15.02,
+     "e": 15.1,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "você",
+     "s": 15.04,
+     "e": 15.12,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 15.08,
+   "end": 15.72,
+   "words": [
+    {
+     "w": "tem",
+     "s": 15.12,
+     "e": 15.28,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "conta",
+     "s": 15.28,
+     "e": 15.54,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "de",
+     "s": 15.54,
+     "e": 15.72,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 15.68,
+   "end": 16.24,
+   "words": [
+    {
+     "w": "luz",
+     "s": 15.72,
+     "e": 15.98,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 16.2,
+   "end": 17.08,
+   "words": [
+    {
+     "w": "Ah",
+     "s": 16.24,
+     "e": 16.36,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "o",
+     "s": 16.38,
+     "e": 16.46,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "empresário",
+     "s": 16.46,
+     "e": 17.08,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 17.04,
+   "end": 18.04,
+   "words": [
+    {
+     "w": "errou",
+     "s": 17.08,
+     "e": 17.66,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "né?",
+     "s": 17.7,
+     "e": 17.82,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 18.0,
+   "end": 19.24,
+   "words": [
+    {
+     "w": "Achou",
+     "s": 18.04,
+     "e": 18.38,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "que",
+     "s": 18.38,
+     "e": 18.58,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "sua",
+     "s": 18.58,
+     "e": 19.24,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 19.2,
+   "end": 19.7,
+   "words": [
+    {
+     "w": "margem",
+     "s": 19.24,
+     "e": 19.48,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "de",
+     "s": 19.48,
+     "e": 19.58,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "lucro",
+     "s": 19.58,
+     "e": 19.7,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 19.66,
+   "end": 20.86,
+   "words": [
+    {
+     "w": "era",
+     "s": 19.7,
+     "e": 19.8,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "de",
+     "s": 19.8,
+     "e": 19.94,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "150%?",
+     "s": 19.94,
+     "e": 20.76,
+     "key": true,
+     "num": true
+    }
+   ]
+  },
+  {
+   "start": 20.82,
+   "end": 21.52,
+   "words": [
+    {
+     "w": "Errado",
+     "s": 20.86,
+     "e": 21.26,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 21.48,
+   "end": 22.06,
+   "words": [
+    {
+     "w": "você",
+     "s": 21.52,
+     "e": 21.8,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vai",
+     "s": 21.8,
+     "e": 21.92,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "ter",
+     "s": 21.92,
+     "e": 22.06,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 22.02,
+   "end": 23.5,
+   "words": [
+    {
+     "w": "que",
+     "s": 22.06,
+     "e": 22.14,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "pagar",
+     "s": 22.14,
+     "e": 22.48,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "multa",
+     "s": 22.48,
+     "e": 23.2,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 23.48,
+   "end": 24.66,
+   "words": [
+    {
+     "w": "correção",
+     "s": 23.52,
+     "e": 23.94,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "monetária",
+     "s": 23.94,
+     "e": 24.66,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 24.62,
+   "end": 25.52,
+   "words": [
+    {
+     "w": "e",
+     "s": 24.66,
+     "e": 24.88,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "juros",
+     "s": 24.88,
+     "e": 25.3,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "isso",
+     "s": 25.36,
+     "e": 25.52,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 25.48,
+   "end": 26.28,
+   "words": [
+    {
+     "w": "vai",
+     "s": 25.52,
+     "e": 25.66,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "prejudicar",
+     "s": 25.66,
+     "e": 26.16,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "o",
+     "s": 26.16,
+     "e": 26.28,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 26.24,
+   "end": 26.88,
+   "words": [
+    {
+     "w": "seu",
+     "s": 26.28,
+     "e": 26.36,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "capital",
+     "s": 26.36,
+     "e": 26.64,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "de",
+     "s": 26.64,
+     "e": 26.88,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 26.84,
+   "end": 27.22,
+   "words": [
+    {
+     "w": "giro",
+     "s": 26.88,
+     "e": 27.04,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "e",
+     "s": 27.04,
+     "e": 27.12,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "o",
+     "s": 27.12,
+     "e": 27.22,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 27.18,
+   "end": 27.62,
+   "words": [
+    {
+     "w": "seu",
+     "s": 27.22,
+     "e": 27.299999999999997,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "fluxo",
+     "s": 27.24,
+     "e": 27.52,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "de",
+     "s": 27.52,
+     "e": 27.62,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 27.58,
+   "end": 28.21,
+   "words": [
+    {
+     "w": "caixa",
+     "s": 27.62,
+     "e": 27.96,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 28.17,
+   "end": 29.55,
+   "words": [
+    {
+     "w": "13º",
+     "s": 28.21,
+     "e": 28.69,
+     "key": true,
+     "num": true
+    },
+    {
+     "w": "seu",
+     "s": 28.85,
+     "e": 29.17,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "caixa",
+     "s": 29.17,
+     "e": 29.55,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 29.51,
+   "end": 30.45,
+   "words": [
+    {
+     "w": "está",
+     "s": 29.55,
+     "e": 29.71,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "preparado?",
+     "s": 29.71,
+     "e": 30.35,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 30.41,
+   "end": 31.53,
+   "words": [
+    {
+     "w": "Seu",
+     "s": 30.45,
+     "e": 30.59,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "caixa",
+     "s": 30.59,
+     "e": 30.85,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "aguenta?",
+     "s": 30.85,
+     "e": 31.29,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 31.49,
+   "end": 32.19,
+   "words": [
+    {
+     "w": "você",
+     "s": 31.53,
+     "e": 31.73,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "faz",
+     "s": 31.73,
+     "e": 31.97,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "tudo",
+     "s": 31.97,
+     "e": 32.19,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 32.15,
+   "end": 32.81,
+   "words": [
+    {
+     "w": "na",
+     "s": 32.19,
+     "e": 32.31,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "sua",
+     "s": 32.31,
+     "e": 32.43,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "empresa",
+     "s": 32.43,
+     "e": 32.77,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 32.77,
+   "end": 33.31,
+   "words": [
+    {
+     "w": "que",
+     "s": 32.81,
+     "e": 33.07,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "você",
+     "s": 33.07,
+     "e": 33.17,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "tem",
+     "s": 33.17,
+     "e": 33.31,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 33.27,
+   "end": 33.49,
+   "words": [
+    {
+     "w": "que",
+     "s": 33.31,
+     "e": 33.39,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "fazer",
+     "s": 33.39,
+     "e": 33.49,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 33.45,
+   "end": 34.09,
+   "words": [
+    {
+     "w": "financeiro",
+     "s": 33.49,
+     "e": 33.95,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "que",
+     "s": 34.05,
+     "e": 34.129999999999995,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 34.05,
+   "end": 34.23,
+   "words": [
+    {
+     "w": "você",
+     "s": 34.09,
+     "e": 34.17,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "tem",
+     "s": 34.15,
+     "e": 34.23,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "que",
+     "s": 34.15,
+     "e": 34.23,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 34.19,
+   "end": 35.07,
+   "words": [
+    {
+     "w": "fazer",
+     "s": 34.23,
+     "e": 34.37,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "RH",
+     "s": 34.37,
+     "e": 34.83,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 35.03,
+   "end": 35.27,
+   "words": [
+    {
+     "w": "que",
+     "s": 35.07,
+     "e": 35.15,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "você",
+     "s": 35.11,
+     "e": 35.19,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "tem",
+     "s": 35.15,
+     "e": 35.27,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 35.23,
+   "end": 35.53,
+   "words": [
+    {
+     "w": "que",
+     "s": 35.27,
+     "e": 35.35,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "fazer",
+     "s": 35.35,
+     "e": 35.45,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "um",
+     "s": 35.45,
+     "e": 35.53,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 35.49,
+   "end": 35.89,
+   "words": [
+    {
+     "w": "departamento",
+     "s": 35.53,
+     "e": 35.89,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 35.85,
+   "end": 36.29,
+   "words": [
+    {
+     "w": "pessoal",
+     "s": 35.89,
+     "e": 36.23,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 36.25,
+   "end": 36.77,
+   "words": [
+    {
+     "w": "mas",
+     "s": 36.29,
+     "e": 36.51,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "você",
+     "s": 36.51,
+     "e": 36.69,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "não",
+     "s": 36.69,
+     "e": 36.77,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 36.73,
+   "end": 37.21,
+   "words": [
+    {
+     "w": "tem",
+     "s": 36.77,
+     "e": 36.85,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "energia",
+     "s": 36.85,
+     "e": 37.11,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "pra",
+     "s": 37.11,
+     "e": 37.21,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 37.17,
+   "end": 37.83,
+   "words": [
+    {
+     "w": "fazer",
+     "s": 37.21,
+     "e": 37.39,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "isso",
+     "s": 37.39,
+     "e": 37.53,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 38.17,
+   "end": 38.87,
+   "words": [
+    {
+     "w": "E",
+     "s": 38.21,
+     "e": 38.61,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "é",
+     "s": 38.61,
+     "e": 38.71,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "isso",
+     "s": 38.71,
+     "e": 38.87,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 38.83,
+   "end": 39.41,
+   "words": [
+    {
+     "w": "que",
+     "s": 38.87,
+     "e": 38.99,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "a",
+     "s": 38.99,
+     "e": 39.11,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "MRTI",
+     "s": 39.11,
+     "e": 39.41,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 39.37,
+   "end": 39.79,
+   "words": [
+    {
+     "w": "vai",
+     "s": 39.41,
+     "e": 39.55,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "mudar",
+     "s": 39.55,
+     "e": 39.71,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "no",
+     "s": 39.71,
+     "e": 39.79,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 39.75,
+   "end": 40.37,
+   "words": [
+    {
+     "w": "seu",
+     "s": 39.79,
+     "e": 39.87,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "negócio",
+     "s": 39.87,
+     "e": 40.21,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 40.33,
+   "end": 40.65,
+   "words": [
+    {
+     "w": "Eu",
+     "s": 40.37,
+     "e": 40.49,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vou",
+     "s": 40.49,
+     "e": 40.57,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "te",
+     "s": 40.57,
+     "e": 40.65,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 40.61,
+   "end": 41.03,
+   "words": [
+    {
+     "w": "dar",
+     "s": 40.65,
+     "e": 40.75,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "uma",
+     "s": 40.75,
+     "e": 40.85,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "coisa",
+     "s": 40.85,
+     "e": 41.03,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 40.99,
+   "end": 41.77,
+   "words": [
+    {
+     "w": "mais",
+     "s": 41.03,
+     "e": 41.29,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "valiosa",
+     "s": 41.29,
+     "e": 41.63,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "do",
+     "s": 41.63,
+     "e": 41.77,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 41.73,
+   "end": 42.25,
+   "words": [
+    {
+     "w": "que",
+     "s": 41.77,
+     "e": 41.85,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "dinheiro",
+     "s": 41.85,
+     "e": 42.11,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 42.21,
+   "end": 42.37,
+   "words": [
+    {
+     "w": "eu",
+     "s": 42.25,
+     "e": 42.33,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vou",
+     "s": 42.27,
+     "e": 42.35,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "te",
+     "s": 42.31,
+     "e": 42.39,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 42.33,
+   "end": 43.23,
+   "words": [
+    {
+     "w": "dar",
+     "s": 42.37,
+     "e": 42.45,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "processo",
+     "s": 42.45,
+     "e": 42.99,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 43.19,
+   "end": 43.75,
+   "words": [
+    {
+     "w": "deixa",
+     "s": 43.23,
+     "e": 43.39,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "essa",
+     "s": 43.39,
+     "e": 43.55,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "parte",
+     "s": 43.55,
+     "e": 43.75,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 43.71,
+   "end": 44.4,
+   "words": [
+    {
+     "w": "pra",
+     "s": 43.75,
+     "e": 43.89,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "MRTI",
+     "s": 43.89,
+     "e": 44.35,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 44.36,
+   "end": 44.8,
+   "words": [
+    {
+     "w": "Nós",
+     "s": 44.4,
+     "e": 44.6,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "somos",
+     "s": 44.6,
+     "e": 44.8,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 44.76,
+   "end": 45.66,
+   "words": [
+    {
+     "w": "especialistas",
+     "s": 44.8,
+     "e": 45.66,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 45.62,
+   "end": 46.18,
+   "words": [
+    {
+     "w": "nisso",
+     "s": 45.66,
+     "e": 45.98,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 46.14,
+   "end": 46.52,
+   "words": [
+    {
+     "w": "Eu",
+     "s": 46.18,
+     "e": 46.32,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vou",
+     "s": 46.32,
+     "e": 46.42,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "te",
+     "s": 46.42,
+     "e": 46.52,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 46.48,
+   "end": 47.7,
+   "words": [
+    {
+     "w": "dar",
+     "s": 46.52,
+     "e": 46.76,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "6",
+     "s": 46.76,
+     "e": 47.18,
+     "key": false,
+     "num": true
+    },
+    {
+     "w": "soluções",
+     "s": 47.18,
+     "e": 47.7,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 47.66,
+   "end": 48.08,
+   "words": [
+    {
+     "w": "em",
+     "s": 47.7,
+     "e": 47.82,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "um",
+     "s": 47.82,
+     "e": 47.9,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "lugar",
+     "s": 47.88,
+     "e": 48.08,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 48.04,
+   "end": 48.72,
+   "words": [
+    {
+     "w": "só",
+     "s": 48.08,
+     "e": 48.32,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "eu",
+     "s": 48.62,
+     "e": 48.699999999999996,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vou",
+     "s": 48.64,
+     "e": 48.72,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 48.68,
+   "end": 49.32,
+   "words": [
+    {
+     "w": "te",
+     "s": 48.72,
+     "e": 48.8,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "dar",
+     "s": 48.8,
+     "e": 48.92,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "números",
+     "s": 48.92,
+     "e": 49.18,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 49.28,
+   "end": 49.46,
+   "words": [
+    {
+     "w": "eu",
+     "s": 49.32,
+     "e": 49.4,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vou",
+     "s": 49.32,
+     "e": 49.4,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "te",
+     "s": 49.4,
+     "e": 49.48,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 49.42,
+   "end": 50.0,
+   "words": [
+    {
+     "w": "dar",
+     "s": 49.46,
+     "e": 49.6,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "dados",
+     "s": 49.6,
+     "e": 49.9,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 49.96,
+   "end": 50.14,
+   "words": [
+    {
+     "w": "eu",
+     "s": 50.0,
+     "e": 50.08,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vou",
+     "s": 50.0,
+     "e": 50.08,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "te",
+     "s": 50.08,
+     "e": 50.16,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 50.1,
+   "end": 50.98,
+   "words": [
+    {
+     "w": "dar",
+     "s": 50.14,
+     "e": 50.24,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "processo",
+     "s": 50.24,
+     "e": 50.68,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 51.0,
+   "end": 51.2,
+   "words": [
+    {
+     "w": "eu",
+     "s": 51.04,
+     "e": 51.12,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "vou",
+     "s": 51.06,
+     "e": 51.14,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "te",
+     "s": 51.14,
+     "e": 51.22,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 51.16,
+   "end": 52.1,
+   "words": [
+    {
+     "w": "dar",
+     "s": 51.2,
+     "e": 51.34,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "consultoria",
+     "s": 51.34,
+     "e": 52.1,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 52.06,
+   "end": 52.96,
+   "words": [
+    {
+     "w": "empresarial",
+     "s": 52.1,
+     "e": 52.74,
+     "key": true,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 52.92,
+   "end": 53.44,
+   "words": [
+    {
+     "w": "Se",
+     "s": 52.96,
+     "e": 53.1,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "você",
+     "s": 53.1,
+     "e": 53.28,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "não",
+     "s": 53.28,
+     "e": 53.44,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 53.4,
+   "end": 54.14,
+   "words": [
+    {
+     "w": "sabe",
+     "s": 53.44,
+     "e": 53.74,
+     "key": true,
+     "num": false
+    },
+    {
+     "w": "chama",
+     "s": 53.82,
+     "e": 54.02,
+     "key": false,
+     "num": false
+    },
+    {
+     "w": "a",
+     "s": 54.02,
+     "e": 54.14,
+     "key": false,
+     "num": false
+    }
+   ]
+  },
+  {
+   "start": 54.1,
+   "end": 54.8,
+   "words": [
+    {
+     "w": "MRTI",
+     "s": 54.14,
+     "e": 54.5,
+     "key": true,
+     "num": false
+    }
+   ]
+  }
+ ],
+ "ev": {
+  "c1Expand": 5.55,
+  "c1Punch": 5.89,
+  "head1": 6.85,
+  "head2": 7.47,
+  "overload": 37.6,
+  "turn": 38.15,
+  "processo": 42.45,
+  "six": 46.76,
+  "mods": [
+   48.92,
+   49.6,
+   50.24,
+   51.34
+  ],
+  "specialists": 44.6,
+  "chama": 53.82,
+  "w_c2": [
+   9.3,
+   10.86
+  ],
+  "w_c3": [
+   12.08,
+   12.84,
+   14.02,
+   15.28
+  ],
+  "w_c4": [
+   19.24,
+   19.94,
+   20.86
+  ],
+  "w_c5": [
+   22.48,
+   23.52,
+   24.88,
+   26.36,
+   27.24
+  ],
+  "w_c6": [
+   29.17,
+   30.59
+  ],
+  "w_c7": [
+   33.49,
+   34.37,
+   35.53,
+   36.51
+  ]
+ }
+}
