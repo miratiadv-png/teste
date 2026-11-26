@@ -36,7 +36,9 @@
 
   /* desktop */
   #desk { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(ellipse 90% 60% at 50% 40%, #0f1a14 0%, #070c09 60%, #030504 100%); }
-  #desk .grid { position: absolute; inset: 0; opacity: .25; background-image: linear-gradient(rgba(240,212,136,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(240,212,136,.07) 1px, transparent 1px); background-size: 60px 60px; }
+  #desk { perspective: 2400px; perspective-origin: 50% 46%; }
+  #stage { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 540px 920px; }
+  #desk .grid { position: absolute; inset: -600px; opacity: .25; background-image: linear-gradient(rgba(240,212,136,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(240,212,136,.07) 1px, transparent 1px); background-size: 60px 60px; }
   #mrtibg { position: absolute; inset: 0; background: radial-gradient(ellipse 90% 55% at 50% 38%, #1a2a1d 0%, #0b130e 55%, #040705 100%); }
   #mrtibg::after { content: ""; position: absolute; inset: 0; opacity: .5; background-image: linear-gradient(rgba(240,212,136,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(240,212,136,.10) 1px, transparent 1px); background-size: 90px 90px;
     -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 40%, #000, transparent 75%); }
@@ -118,7 +120,18 @@
     background: rgba(8,12,9,.88); border: 2px solid rgba(240,212,136,.8); box-shadow: 0 0 40px rgba(240,212,136,.3); }
   .sixb .n { width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; font-family: var(--play); font-weight: 800; font-size: 54px; background: linear-gradient(180deg, #f6dc94, #c99f45); color: var(--ink); }
   .sixb .t { font-family: var(--mono); font-weight: 700; font-size: 28px; letter-spacing: .22em; color: var(--gold-hi); }
-  .mods { position: absolute; left: 70px; right: 70px; z-index: 40; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fix { position: absolute; left: 70px; right: 70px; z-index: 40; padding: 20px 28px 16px; border-radius: 24px; background: rgba(12,18,14,.96); border: 1.5px solid rgba(240,212,136,.35); box-shadow: 0 24px 60px rgba(0,0,0,.55); }
+  .fix .fh { display: flex; justify-content: space-between; font-family: var(--mono); font-weight: 700; font-size: 21px; letter-spacing: .22em; color: var(--gold-hi); margin-bottom: 6px; }
+  .fix .fh b { color: var(--cream); font-weight: 700; }
+  .fix .row { position: relative; display: flex; align-items: center; gap: 20px; height: 70px; border-top: 1px solid rgba(246,240,226,.08); }
+  .fix .bx { flex: none; width: 44px; height: 44px; border-radius: 12px; border: 2px solid rgba(255,106,82,.85); display: grid; place-items: center; }
+  .fix .bx svg { width: 30px; height: 30px; overflow: visible; }
+  .fix .l { font-size: 33px; font-weight: 700; position: relative; white-space: nowrap; }
+  .fix .l i { position: absolute; left: -4px; top: 54%; height: 3px; background: rgba(240,212,136,.75); }
+  .fix .st { margin-left: auto; font-family: var(--mono); font-weight: 700; font-size: 19px; letter-spacing: .16em; white-space: nowrap; }
+  .fix .chips { display: flex; gap: 10px; margin-top: 12px; }
+  .fix .chips span { padding: 9px 16px; border-radius: 999px; border: 1.5px solid rgba(240,212,136,.65); font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: .1em; color: var(--gold-hi); white-space: nowrap; }
+  .chartw svg text { font-family: var(--sans); font-weight: 800; }
   .mod { display: flex; align-items: center; gap: 18px; padding: 22px 24px; border-radius: 20px; background: rgba(14,22,17,.94); border: 1.5px solid rgba(240,212,136,.3); }
   .mod .ic { flex: none; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, #f6dc94, #c99f45); color: var(--ink); font-weight: 900; font-size: 28px; }
   .mod .t { font-size: 34px; font-weight: 800; }
@@ -139,10 +152,12 @@
   .captions .w.num { font-family: var(--serif); font-style: italic; font-weight: 700; text-transform: none; font-size: 1.2em; line-height: .9; color: var(--gold-hi); -webkit-text-stroke: 0; }
 
   /* headline */
-  .scrim { position: absolute; inset: 0; z-index: 60; background: radial-gradient(ellipse 80% 45% at 50% 50%, rgba(3,5,4,.9), rgba(3,5,4,.6) 70%, rgba(3,5,4,.4)); }
-  .head { position: absolute; left: 40px; right: 40px; top: 760px; text-align: center; z-index: 61; }
-  .head .l1 { font-family: var(--serif); font-weight: 600; font-size: 112px; line-height: 1; text-shadow: 0 8px 40px rgba(0,0,0,.7); }
-  .head .l2 { margin-top: 14px; font-family: var(--play); font-style: italic; font-weight: 700; font-size: 132px; line-height: 1.05; background: var(--metal); -webkit-background-clip: text; background-clip: text; color: transparent;
+  .scrim { position: absolute; inset: 0; z-index: 60; background: linear-gradient(90deg, rgba(3,5,4,.94) 0%, rgba(3,5,4,.78) 55%, rgba(3,5,4,.25) 100%); }
+  .head { position: absolute; left: 80px; right: 60px; top: 640px; text-align: left; z-index: 61; }
+  .head .ln { display: block; overflow: hidden; padding: 0 0 .1em; }
+  .head .ln > span { display: inline-block; }
+  .head .l1 { font-family: var(--serif); font-weight: 600; font-size: 104px; line-height: 1; text-shadow: 0 8px 40px rgba(0,0,0,.7); }
+  .head .l2 { font-family: var(--play); font-style: italic; font-weight: 700; font-size: 150px; line-height: 1.05; background: var(--metal); -webkit-background-clip: text; background-clip: text; color: transparent;
     filter: drop-shadow(0 3px 2px rgba(40,26,4,.9)) drop-shadow(0 0 30px rgba(255,214,120,.4)); padding: 0 .06em; }
 
   .wm { position: absolute; left: 50px; bottom: 54px; z-index: 74; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 21px; letter-spacing: .42em; color: var(--cream); opacity: .85; }
@@ -171,7 +186,9 @@
   <div class="lid"><div class="scr"><img src="../brand/crest.png"><div class="bar"><i></i></div></div></div></div>
   <div class="kick1">SEGUNDA-FEIRA · 09:41</div></div>
 <div id="desk">
-  <div class="grid"></div><div id="mrtibg"></div>
+  <div id="mrtibg"></div>
+  <div id="stage">
+  <div class="grid"></div>
   <div class="topbar" id="tb1"><span><b>Financeiro</b> · Conta PJ</span><span>SEG 09:41 · 23%</span></div>
   <div class="topbar" id="tb2"><span class="mr"><img src="../brand/crest.png">MRTI · PAINEL DE GESTÃO</span><span class="ok">● SISTEMA ONLINE</span></div>
   <div id="opening">
@@ -186,18 +203,19 @@
   <div id="clipwins"></div>
   <div id="widgets"></div>
   <div class="plabel"><span class="n"></span><span class="t"></span></div>
+  <div class="sixb"><span class="n">6</span><span class="t">SOLUÇÕES · 1 LUGAR SÓ</span></div>
+  <div class="fix" id="fix"></div>
+  <div class="waBtn" id="waBtn"></div>
+  <svg class="cursor" viewBox="0 0 40 52"><path d="M3 2 L3 42 L13 33 L20 49 L27 46 L20 30 L34 30 Z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/></svg>
+  <div class="ripple"></div>
+  </div>
   <div class="alertbar"><b>SISTEMA SOBRECARREGADO</b><span>6 DORES · 1 EMPRESÁRIO · 0 PROCESSO</span></div>
   <div class="redwash"></div>
   <div class="stamp" id="stampP">Processo.</div>
-  <div class="sixb"><span class="n">6</span><span class="t">SOLUÇÕES · 1 LUGAR SÓ</span></div>
-  <div class="mods" id="mods"></div>
-  <div class="waBtn" id="waBtn"></div>
   <div class="scrim"></div>
-  <div class="head"><div class="l1">Sua empresa fatura.</div><div class="l2">Mas cadê o dinheiro?</div></div>
+  <div class="head"><div class="ln"><span class="l1">Sua empresa fatura.</span></div><div class="ln"><span class="l2">Mas cadê o</span></div><div class="ln"><span class="l2">dinheiro?</span></div></div>
   <div class="captions"></div>
   <div class="wm"><img src="../brand/crest.png"><span>MRTI</span></div>
-  <svg class="cursor" viewBox="0 0 40 52"><path d="M3 2 L3 42 L13 33 L20 49 L27 46 L20 30 L34 30 Z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/></svg>
-  <div class="ripple"></div>
   <div class="rgb"></div>
 </div>
 <div class="end"><img class="lock" src="../brand/lockup.png"><div class="kick">FINANCEIRO · DP & RH · TRIBUTOS · GESTÃO</div>
@@ -209,7 +227,8 @@ const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const prog = (t, a, b) => clamp((t - a) / (b - a));
 const easeOut = x => 1 - Math.pow(1 - x, 3);
 const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-const easeBack = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const expoOut = x => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x);
+const easeBack = x => { const c1 = 1.2, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
 const lerp = (a, b, k) => a + (b - a) * k;
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const WA = c => `<svg viewBox="0 0 24 24"><path d="M12 3.2c-4.9 0-8.8 3.6-8.8 8 0 1.7.6 3.3 1.6 4.6L3.7 20.6l5-1.5c1 .4 2.1.6 3.3.6 4.9 0 8.8-3.6 8.8-8.3S16.9 3.2 12 3.2Z" fill="none" stroke="${c}" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.4 10.4h7.2M8.4 13.4h4.6" stroke="${c}" stroke-width="1.7" stroke-linecap="round"/></svg>`;
@@ -280,10 +299,13 @@ window.setup = tl => {
     <div class="wg" id="g_c2"><div class="wh">FATURAMENTO · ÚLTIMOS 3 MESES</div>
       <div class="row"><span>Setembro</span><span class="v red">R$ ?.???</span></div><div class="row"><span>Outubro</span><span class="v red">R$ ?.???</span></div><div class="row"><span>Novembro</span><span class="v red">R$ ?.???</span></div>
       <div class="pill">VOCÊ SABE?</div></div>
-    <div class="wg" id="g_c3"><div class="wh">"LUCRO" DO MÊS</div>
-      <div class="row"><span>Lucro</span><span class="v big grn" id="g3v">R$ 10.000</span></div>
-      <div class="row x1 red"><span>− Funcionários</span><span class="v">folha + encargos</span></div><div class="row x2 red"><span>− Conta de luz</span><span class="v">+ marketing</span></div>
-      <div class="pill">SOBROU QUANTO?</div></div>
+    <div class="wg chartw" id="g_c3"><div class="wh">FATURAMENTO × LUCRO</div>
+      <svg width="908" height="400" viewBox="0 0 908 400"><defs><pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="12" height="12" fill="rgba(229,69,47,.12)"/><rect width="5" height="12" fill="rgba(229,69,47,.45)"/></pattern></defs>
+        <g stroke="rgba(246,240,226,.08)" stroke-width="1.5"><line x1="0" y1="80" x2="908" y2="80"/><line x1="0" y1="170" x2="908" y2="170"/><line x1="0" y1="260" x2="908" y2="260"/><line x1="0" y1="350" x2="908" y2="350"/></g>
+        <path id="gapP" fill="url(#hatch)"/><path id="fatP" fill="none" stroke="#f0d488" stroke-width="6" stroke-linecap="round"/><path id="lucP" fill="none" stroke="#ff6a52" stroke-width="6" stroke-linecap="round"/>
+        <circle id="ringP" r="12" fill="none" stroke="#ff6a52" stroke-width="3"/><circle id="dotP" r="11" fill="#ff6a52"/>
+        <text id="fatL" x="12" y="58" font-size="28" fill="#f0d488">Faturamento</text><text id="lucL" x="12" y="150" font-size="28" fill="#ff6a52">Lucro · R$ 10 mil</text>
+        <text id="qL" x="890" y="250" font-size="54" text-anchor="end" fill="#f6f0e2" style="font-family:'Playfair Display';font-style:italic;font-weight:700">Cadê o dinheiro?</text></svg></div>
     <div class="wg" id="g_c4"><div class="wh">PRECIFICAÇÃO · COMPRA R$ 40 · VENDE R$ 100</div>
       <div class="row"><span>Margem de lucro</span><span class="v big red" id="g4v">150%</span></div>
       <div class="row ok gold"><span>Margem real: 60%</span><span class="v">150% = markup</span></div></div>
@@ -296,8 +318,10 @@ window.setup = tl => {
       <div class="row" style="margin-top:12px"><span>Energia</span><span class="v red" id="g7v">100%</span></div></div>`;
   window.TABS = ['Financeiro', 'RH', 'Departamento pessoal', 'Estoque', 'Tributos', 'Compras', 'Folha de ponto', 'Contratações', 'Caixa', 'Controles', 'Negociação'];
   $('#g_c7 .tabs').innerHTML = TABS.map(x => `<span>${x}</span>`).join('');
-  $('#mods').innerHTML = [['Números', 'FATURAMENTO · MARGEM'], ['Dados', 'INDICADORES'], ['Processo', 'ROTINA QUE FUNCIONA'], ['Consultoria', 'EMPRESARIAL']]
-    .map(m => `<div class="mod"><span class="ic">✓</span><div><div class="t">${m[0]}</div><div class="s">${m[1]}</div></div></div>`).join('');
+  const CHECK = `<svg viewBox="0 0 30 30"><path class="ck" d="M6 15.5 L12.5 22 L24.5 8.5" fill="none" stroke="#0c1310" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path class="xx" d="M8 8 L22 22 M22 8 L8 22" fill="none" stroke="#ff6a52" stroke-width="3.6" stroke-linecap="round"/></svg>`;
+  $('#fix').innerHTML = `<div class="fh"><span>AS 6 DORES</span><b class="cnt">0/6 RESOLVIDAS</b></div>` +
+    ['Faturamento', 'Lucro', 'Precificação', 'Passivo trabalhista', 'Caixa', 'Sobrecarga'].map(x => `<div class="row"><span class="bx">${CHECK}</span><span class="l">${x}<i></i></span><span class="st">DOR</span></div>`).join('') +
+    `<div class="chips">${['Números', 'Dados', 'Processo', 'Consultoria'].map(x => `<span>${x}</span>`).join('')}</div>`;
   $('#waBtn').innerHTML = `${WA('#0c1310')}<div><div class="t">Chama a MRTI</div><div class="n">(35) 91021-6941</div></div>`;
   $('.end .cta').innerHTML = `${WA('#d6b25a')}Mande <b>DIAGNÓSTICO</b> no WhatsApp`;
   return true;
@@ -330,8 +354,31 @@ function captions(t, y) {
   cap.style.top = y + 'px'; cap.style.transform = 'translateY(-50%)';
 }
 
+function camKeys() {
+  const ev = EV, K = [[O.desk, 24, -20, .80, 0, 80, 0], [2.75, 7, -7, .93, 0, 20, 1.2], [C.c1.start + .1, 4, 6, 1.04, -20, -90, .7],
+    [ev.c1Expand - .02, 0, 0, 1, 0, 0, .45], [ev.head1, 0, 0, 1, 0, 0, 0], [ev.head1 + .85, 8, 24, .84, 330, 30, .85]];
+  TL.order.forEach((n, i) => K.push([C[n].start - .1, 3, i % 2 ? -5 : 5, 1.0, 0, 0, .6]));
+  K.push([ev.overload, 0, 0, 1, 0, 0, .35], [ev.turn - .05, 18, -22, .84, 0, 60, 0], [ev.turn + 1.1, 0, 0, 1, 0, 0, 1.1],
+    [C.c9.start + .3, 3, 5, .97, 0, 0, .8], [C.c9.start + C.c9.dur, 0, 0, 1, 0, 0, .5]);
+  return K.sort((a, b) => a[0] - b[0]);
+}
+let KEYS = null;
+function camera(t) {
+  KEYS = KEYS || camKeys();
+  let i = 0; for (let j = 0; j < KEYS.length; j++) if (KEYS[j][0] <= t) i = j;
+  let v = KEYS[i].slice(1, 6);
+  const nx = KEYS[i + 1];
+  if (nx && nx[6] > 0) { const st = Math.max(KEYS[i][0], nx[0] - nx[6]); if (t >= st) { const k = easeInOut(prog(t, st, nx[0])); v = v.map((x, j) => lerp(x, nx[j + 1], k)); } }
+  let [rx, ry, s, tx, ty] = v;
+  const ev = EV, fs = (t >= ev.c1Expand - .05 && t < ev.head1) ? 1 : 0;
+  rx += (1 - fs) * .5 * Math.sin(t * .45); ry += (1 - fs) * .7 * Math.sin(t * .33);
+  TL.order.forEach(n => { const c = C[n]; if (t >= c.start && t < c.start + c.dur + .2) s *= 1 + .03 * Math.sin(Math.PI / 2 * prog(t, c.start, c.start + c.dur)); });
+  if (t > ev.overload - .6 && t < ev.overload + .45) { const a = 9 * prog(t, ev.overload - .6, ev.overload); tx += Math.sin(t * 83) * a; ty += Math.cos(t * 71) * a * .6; }
+  return `translate3d(${tx}px, ${ty}px, 0) rotateX(${rx}deg) rotateY(${ry}deg) scale(${s})`;
+}
 window.render = t => {
   const ev = EV, turn = ev.turn, over = ev.overload, end = TL.endCard;
+  $('#stage').style.transform = camera(t);
   // ---------- laptop ----------
   const lidK = easeOut(prog(t, O.lid0, O.lid1));
   $('.lid').style.transform = `rotateX(${-88 + 80 * lidK}deg)`;
@@ -427,12 +474,28 @@ window.render = t => {
     g.style.top = y + 'px';
     if (n === 'c2') { g.style.left = '480px'; g.style.top = '1180px'; g.style.width = '560px'; }
     else if (n === 'c7') { g.style.left = '60px'; g.style.top = (bottom + 24) + 'px'; g.style.width = '960px'; }
+    else if (n === 'c3') { g.style.left = '60px'; g.style.top = (bottom + 30) + 'px'; g.style.width = '960px'; }
     else { g.style.left = (i % 2 ? 60 : 300) + 'px'; g.style.width = '720px'; }
     const k = easeBack(prog(t, c.start + .25, c.start + .55)); g.style.opacity = clamp(k * 1.4); g.style.transform = `scale(${.85 + .15 * k})`;
     const B = ev['w_' + n];
     if (n === 'c2') { g.querySelectorAll('.row .v').forEach((v, j) => { v.style.opacity = Math.sin(t * 10 + j) > -.2 ? 1 : .3; }); const p = g.querySelector('.pill'); p.style.opacity = t >= B[1] ? 1 : 0; p.style.transform = `scale(${t >= B[1] ? .8 + .2 * easeBack(prog(t, B[1], B[1] + .3)) : 0})`; }
-    if (n === 'c3') { $('#g3v').classList.toggle('strike', t >= B[1]); $('#g3v').style.color = t >= B[1] ? 'var(--red-hi)' : '';
-      g.querySelector('.x1').style.opacity = t >= B[2] ? 1 : 0; g.querySelector('.x2').style.opacity = t >= B[3] ? 1 : 0; g.querySelector('.pill').style.opacity = t >= B[3] + .5 ? 1 : 0; }
+    if (n === 'c3') {
+      const p = prog(t, c.start, c.start + c.dur), X = x => x * 908;
+      const fat = x => 72 + 6 * Math.sin(x * 9);
+      const step = (tt, a0, d) => easeInOut(prog(tt, a0, a0 + d));
+      const lucAt = tt => 160 + 90 * step(tt, B[1], .35) + 80 * step(tt, B[2], .4) + 70 * step(tt, B[3], .4);
+      let fd = '', ld = '', gd = '';
+      const N = 60, pts = [];
+      for (let k = 0; k <= N; k++) { const x = k / N * p; const tt = c.start + x * c.dur; pts.push([X(x), fat(x), lucAt(tt)]); }
+      pts.forEach(([x, f, l], k) => { fd += (k ? 'L' : 'M') + x.toFixed(1) + ' ' + f.toFixed(1); ld += (k ? 'L' : 'M') + x.toFixed(1) + ' ' + l.toFixed(1); });
+      gd = fd + pts.slice().reverse().map(([x, f, l]) => 'L' + x.toFixed(1) + ' ' + l.toFixed(1)).join('') + 'Z';
+      $('#fatP').setAttribute('d', fd); $('#lucP').setAttribute('d', ld); $('#gapP').setAttribute('d', gd);
+      const [lx, , ly] = pts[pts.length - 1]; $('#dotP').setAttribute('cx', lx); $('#dotP').setAttribute('cy', ly);
+      let ring = 0; for (const bt of [B[1], B[2], B[3]]) if (t >= bt && t < bt + .7) ring = prog(t, bt, bt + .7);
+      $('#ringP').setAttribute('cx', lx); $('#ringP').setAttribute('cy', ly); $('#ringP').setAttribute('r', 12 + 30 * easeOut(ring)); $('#ringP').style.opacity = ring > 0 ? 1 - ring : 0;
+      $('#lucL').setAttribute('y', Math.min(330, lucAt(t) - 22)); $('#lucL').textContent = t >= B[1] ? 'Lucro' : 'Lucro · R$ 10 mil';
+      const q = expoOut(prog(t, B[3] + .35, B[3] + .9)); $('#qL').style.opacity = q; $('#qL').setAttribute('y', 250 + 30 * (1 - q));
+    }
     if (n === 'c4') { const v = $('#g4v'); v.style.opacity = t >= B[0] ? 1 : .15; v.style.transform = `scale(${t >= B[1] ? 1 + .12 * Math.exp(-(t - B[1]) * 6) : 1})`; v.classList.toggle('strike', t >= B[2]);
       g.querySelector('.ok').style.opacity = t >= B[2] ? easeOut(prog(t, B[2], B[2] + .3)) : 0; }
     if (n === 'c5') { ['a1', 'a2', 'a3', 'a4', 'a5'].forEach((c_, j) => { const e = g.querySelector('.' + c_); const kk = easeBack(prog(t, B[j], B[j] + .3)); e.style.opacity = t >= B[j] ? clamp(kk * 1.4) : 0; e.style.transform = `translateX(${(1 - kk) * -30}px)`; }); }
@@ -473,10 +536,31 @@ window.render = t => {
   const sx = $('.sixb'), sxon = t >= ev.six && t < c9.start + c9.dur;
   sx.style.display = sxon ? '' : 'none';
   if (sxon) { const k = easeBack(prog(t, ev.six, ev.six + .35)); sx.style.transform = `translateX(-50%) scale(${.6 + .4 * k})`; sx.style.opacity = clamp(k * 1.5) * (1 - prog(t, c9.start + c9.dur - .2, c9.start + c9.dur)); }
-  const mods = $('#mods'), mon = t >= ev.mods[0] - .2 && t < c9.start + c9.dur;
-  mods.style.display = mon ? '' : 'none';
-  if (mon) { mods.style.top = '1250px'; mods.style.opacity = 1 - prog(t, c9.start + c9.dur - .2, c9.start + c9.dur);
-    $$('.mod').forEach((m, j) => { const a = ev.mods[j]; const k = easeBack(prog(t, a - .1, a + .25)); m.style.opacity = t >= a - .1 ? clamp(k * 1.5) : 0; m.style.transform = `scale(${.8 + .2 * k})`; m.classList.toggle('on', t >= a && t < a + .6); }); }
+  const fx = $('#fix'), fon = t >= c9.start + .15 && t < c9.start + c9.dur;
+  fx.style.display = fon ? '' : 'none';
+  if (fon) {
+    fx.style.top = '1000px';
+    const ink = expoOut(prog(t, c9.start + .15, c9.start + .7)); fx.style.opacity = ink * (1 - prog(t, c9.start + c9.dur - .25, c9.start + c9.dur));
+    fx.style.transform = `translateY(${(1 - ink) * 40}px)`;
+    let done = 0;
+    $$('.fix .row').forEach((r, j) => {
+      const a = c9.start + .3 + j * .06, k = expoOut(prog(t, a, a + .45));
+      r.style.opacity = k; r.style.transform = `translateY(${(1 - k) * 18}px)`;
+      const ct = ev.six + .15 + j * .12, ck = prog(t, ct, ct + .3);
+      const on = t >= ct; if (on) done++;
+      const bx = r.querySelector('.bx');
+      bx.style.background = on ? `rgba(240,212,136,${easeOut(ck)})` : 'transparent';
+      bx.style.borderColor = on ? '#f0d488' : 'rgba(255,106,82,.85)';
+      r.querySelector('.ck').style.strokeDashoffset = 1 - easeOut(ck);
+      r.querySelector('.xx').style.opacity = on ? 0 : 1;
+      r.querySelector('.l i').style.width = on ? `calc(${easeInOut(prog(t, ct + .05, ct + .35)) * 100}% + 8px)` : '0';
+      r.querySelector('.l').style.color = on ? 'rgba(246,240,226,.6)' : '#f6f0e2';
+      const st = r.querySelector('.st'); st.textContent = on ? 'RESOLVIDO' : 'DOR'; st.style.color = on ? '#f0d488' : '#ff6a52';
+    });
+    fx.querySelector('.cnt').textContent = `${done}/6 RESOLVIDAS`;
+    $$('.fix .chips span').forEach((c_, j) => { const a = ev.mods[j], k = expoOut(prog(t, a - .05, a + .35)); c_.style.opacity = t >= a - .05 ? k : 0; c_.style.transform = `translateY(${(1 - k) * 14}px)`;
+      c_.style.background = t >= a && t < a + .5 ? 'rgba(240,212,136,.22)' : 'transparent'; });
+  }
   // ---------- CTA clip ----------
   const c10on = t >= c10.start - .12 && t < end + .05;
   W.c10.e.style.display = c10on ? '' : 'none';
@@ -490,9 +574,9 @@ window.render = t => {
   const sc = easeOut(prog(t, ev.head1 - .15, ev.head1 + .2)) * (1 - prog(t, C.c2.start - .3, C.c2.start - .1));
   $('.scrim').style.opacity = sc; $('.scrim').style.display = sc > 0 ? '' : 'none';
   const hon = t >= ev.head1 && t < C.c2.start - .1; $('.head').style.display = hon ? '' : 'none';
-  if (hon) { const l1 = easeBack(prog(t, ev.head1, ev.head1 + .3)), l2 = easeBack(prog(t, ev.head2, ev.head2 + .3));
-    $('.head .l1').style.opacity = clamp(l1 * 1.5); $('.head .l1').style.transform = `translateY(${(1 - l1) * 40}px)`;
-    $('.head .l2').style.opacity = t >= ev.head2 ? clamp(l2 * 1.5) : 0; $('.head .l2').style.transform = `scale(${1.3 - .3 * l2})`;
+  if (hon) {
+    const sp = $$('.head .ln > span'), ts = [ev.head1, ev.head2, ev.head2 + .12];
+    sp.forEach((e, i) => { const k = expoOut(prog(t, ts[i], ts[i] + .55)); e.style.transform = `translateY(${(1 - k) * 105}%)`; });
     $('.head').style.opacity = 1 - prog(t, C.c2.start - .3, C.c2.start - .1); }
   // ---------- captions ----------
   let capY = null;
@@ -520,12 +604,11 @@ window.render = t => {
     const ck = easeBack(prog(lt, .95, 1.45)); $('.end .cta').style.opacity = clamp(ck * 1.4); $('.end .cta').style.transform = `translateX(-50%) scale(${(.85 + .15 * ck) * (1 + .03 * Math.sin(Math.max(0, lt - 1.45) * 5))})`;
     $('.end .contact').style.opacity = easeOut(prog(lt, 1.2, 1.7)) * .92; }
   // ---------- glitch + flashes ----------
-  let g = 0; for (const gt of [ev.head2, over, ev.c1Expand]) if (t >= gt && t < gt + .22) g = Math.max(g, 1 - prog(t, gt, gt + .22));
-  $('.rgb').style.background = g ? `linear-gradient(${(t * 900) % 360}deg, rgba(255,40,40,${.2 * g}), transparent 40%, rgba(40,255,255,${.15 * g}))` : 'none';
-  $('#desk').style.transform = g ? `translate(${Math.sin(t * 160) * 12 * g}px, 0)` : '';
+  let g = (t >= over && t < over + .45) ? 1 - prog(t, over, over + .45) : 0;
+  $('.rgb').style.background = g ? `linear-gradient(90deg, rgba(255,40,40,${.16 * g}), transparent 45%, rgba(40,255,255,${.12 * g}))` : 'none';
+  $('#desk').style.transform = '';
   let fl = 0;
-  for (const ft of [O.desk, ev.head2, over + .45, turn, ev.six]) if (t >= ft) fl = Math.max(fl, Math.exp(-(t - ft) * 11) * (ft === over + .45 ? .9 : .4));
-  fl = Math.max(fl, Math.sin(Math.PI * prog(t, end - .15, end + .15)) * .8);
+  for (const [ft, a] of [[O.desk, .35], [turn, .55], [end, .5]]) if (t >= ft) fl = Math.max(fl, Math.exp(-(t - ft) * 4) * a);
   $('.flash').style.opacity = fl;
   return true;
 };

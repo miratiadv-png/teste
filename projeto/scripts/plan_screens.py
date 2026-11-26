@@ -40,7 +40,7 @@ def dur(name):
     return sum(b - a for a, b in CL[name][1])
 
 
-t = 8.30                       # after the headline
+t = 8.90                       # after the headline (holds ~0.6 s fully revealed)
 START["c1"] = 3.40
 for n in order:
     START[n] = round(t, 3); t += dur(n) + GAP

@@ -7,7 +7,8 @@ fs.mkdirSync(outDir, { recursive: true });
 (async () => {
   const br = await chromium.launch();
   let frames;
-  if (stillsA) frames = stillsA.split(',').map(Number).map((t, i) => [`still_${i}.png`, t]);
+  if (stillsA && stillsA.startsWith('f:')) { frames = []; for (const r of stillsA.slice(2).split(',')) { const [a, b] = r.split('-').map(Number); for (let i = a; i <= (b ?? a); i++) frames.push([`f_${String(i).padStart(5, '0')}.jpg`, i / fps]); } }
+  else if (stillsA) frames = stillsA.split(',').map(Number).map((t, i) => [`still_${i}.png`, t]);
   else { const n = Math.round(tl.total * fps); frames = Array.from({ length: n }, (_, i) => [`f_${String(i).padStart(5, '0')}.jpg`, i / fps]); }
   const W = Number(wA || 1);
   const t0 = Date.now();

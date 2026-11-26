@@ -255,7 +255,7 @@ for c_ in (2.05, 2.5, 3.0, 3.5):
     click(c_, .2, .2)
 c1 = C["c1"]
 popsnd(c1["start"] - .12, .3, 640)
-whoosh(EV["c1Expand"] - .12, .35, .25); glitch(EV["c1Expand"], .2, .1); hit(EV["c1Expand"] + .05, .14)
+whoosh(EV["c1Expand"] - .12, .35, .25); hit(EV["c1Expand"] + .05, .14)
 hit(EV["c1Punch"], .16)
 whoosh(EV["head1"] - .25, .4, .2); hit(EV["head1"], .22); glitch(EV["head2"], .25, .12); boom(EV["head2"], .55); hit(EV["head2"], .25)
 # pains
@@ -286,6 +286,8 @@ whoosh(OVER + .2, .3, .25); boom(OVER + .45, .7); hit(OVER + .45, .3)
 shimmer(TURN, .1); chime(TURN + .05, .07); popsnd(TURN - .1, .25, 700)
 hit(EV["processo"], .12)
 hit(EV["six"], .15); shimmer(EV["six"], .08)
+for j in range(6):
+    blip(EV["six"] + .15 + j * .12, 1800 + 140 * j, .05); click(EV["six"] + .15 + j * .12, .08)
 for t_ in EV["mods"]:
     blip(t_, 2200, .05); shimmer(t_, .025)
 popsnd(C["c10"]["start"] - .12, .25, 680)
